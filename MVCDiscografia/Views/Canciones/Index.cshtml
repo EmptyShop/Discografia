@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MVCDiscografia.ViewModels.CancionViewVM>
+
+@{
+    ViewBag.Title = "Canciones";
+}
+
+<h2>Canciones</h2>
+<p>
+    @Html.ActionLink("Nueva Canción", "Create")
+</p>
+
+<div class="row h4 index-layout">
+    <div class="col-md-3">
+        @Html.DisplayNameFor(model => model.losArtistas)
+    </div>
+    <div class="col-md-4">
+        @Html.DisplayNameFor(model => model.Cancion.Nombre)
+    </div>
+    <div class="col-md-1">
+        @Html.DisplayNameFor(model => model.Cancion.Duracion)
+    </div>
+    <div class="col-md-1">
+        @Html.DisplayNameFor(model => model.Cancion.Año)
+    </div>
+    <div class="col-md-3">&nbsp;</div>
+</div>
+
+@foreach (var item in Model) {
+<div class="row index-layout">
+    <div class="col-md-3">
+        @Html.DisplayFor(modelItem => item.losArtistas)
+    </div>
+    <div class="col-md-4">
+        @Html.DisplayFor(modelItem => item.Cancion.Nombre)
+    </div>
+    <div class="col-md-1">
+        @{ string duracion = item.Cancion.Duracion != null ?
+               item.Cancion.Duracion.Value.Hours > 0 ? item.Cancion.Duracion.Value.ToString(@"hh\:mm\:ss") : item.Cancion.Duracion.Value.ToString(@"mm\:ss") 
+               : String.Empty; }
+        @Html.DisplayFor(modelItem => duracion)
+    </div>
+    <div class="col-md-1">
+        @Html.DisplayFor(modelItem => item.Cancion.Año)
+    </div>
+    <div class="col-md-3">
+        @Html.ActionLink("Editar", "Edit", new { id=item.Cancion.CancionID }) |
+        @Html.ActionLink("Detalles", "Details", new { id=item.Cancion.CancionID }) |
+        @Html.ActionLink("Eliminar", "Delete", new { id=item.Cancion.CancionID })
+    </div>
+</div>
+}
+
+

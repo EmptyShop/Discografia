@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+
+<div class="page-header well">
+    <h3>Administración de Discografía</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <ul class="list-group">
+            <li class="list-group-item">@Html.ActionLink("Formatos de Grabación", "Index", "Formatos")</li>
+            <li class="list-group-item">@Html.ActionLink("Artistas", "Index", "Artistas")</li>
+            <li class="list-group-item">@Html.ActionLink("Canciones", "Index", "Canciones")</li>
+            <li class="list-group-item">@Html.ActionLink("Albumes", "Index", "Albums")</li>
+            <li class="list-group-item">@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        &nbsp;
+    </div>
+</div>

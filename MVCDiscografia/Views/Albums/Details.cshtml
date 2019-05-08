@@ -1,0 +1,77 @@
+﻿@model MVCDiscografia.ViewModels.AlbumViewVM
+
+@{
+    ViewBag.Title = "Detalles del Album";
+}
+
+<h2>Detalles del Album</h2>
+
+<div>
+    <h4>Album</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.losArtistas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.losArtistas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Album.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Album.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Album.FechaGrabacion)
+        </dt>
+
+        <dd>
+            @{
+                string fechaGrabacion = Model.Album.FechaGrabacion.Value.ToString("dd-MMM-yy");
+                string fechaAdquisicion = Model.Album.FechaAdquisicion.Value.ToString("dd-MMM-yy");
+            }
+            @Html.DisplayFor(model => fechaGrabacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Album.FechaAdquisicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => fechaAdquisicion)
+        </dd>
+
+        <dt>
+            Formato
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Album.Formato.Descripcion)
+        </dd>
+
+        <dt>
+            Tracklist
+        </dt>
+
+        @{
+            foreach (var c in Model.elTracklist)
+            {
+            <dd>
+                @Html.DisplayFor(p => c.posicion) - 
+                @Html.DisplayFor(p => c.nombreCancion)
+            </dd>
+            }
+        }
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Album.AlbumID }) |
+    @Html.ActionLink("Regresar al Indice", "Index")
+</p>

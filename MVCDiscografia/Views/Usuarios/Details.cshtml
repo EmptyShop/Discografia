@@ -1,0 +1,37 @@
+﻿@model MVCDiscografia.Models.Usuario
+
+@{
+    ViewBag.Title = "Detalles del Usuario";
+}
+
+<h2>Detalles del Usuario</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </dt>
+
+        <dd>
+            @{
+                string estatus = Model.Estatus == 1 ? "Activo" : "Suspendido";
+            }
+            @Html.DisplayFor(model => estatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.UsuarioID }) |
+    @Html.ActionLink("Regresar al Indice", "Index")
+</p>

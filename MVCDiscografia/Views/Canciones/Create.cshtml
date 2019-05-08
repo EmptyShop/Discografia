@@ -1,0 +1,78 @@
+﻿@model MVCDiscografia.ViewModels.CancionCreateEditVM
+
+@{
+    ViewBag.Title = "Nueva Canción";
+}
+
+<h2>Nueva Canción</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Canción</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model =>  model.Cancion.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cancion.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cancion.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cancion.Artistas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10 contenedorListas">
+                <div class="column-left">
+                    @Html.LabelFor(model => model.ListaArtistas, htmlAttributes: new { @class = "control-label" } )<br />
+                    @Html.ListBoxFor(model => model.ListaArtistas, Model.ListaArtistas, new { @class = "form-control listbox" })
+                </div>
+
+                <div class="column-center">
+                    <input type="button" id="asignar" value=">" /><br />
+                    <input type="button" id="desasignar" value="<" />
+                </div>
+
+                <div class="column-right">
+                    @Html.LabelFor(model => model.ArtistasSeleccionados, htmlAttributes: new { @class = "control-label" })<br />
+                    @Html.ListBoxFor(model => model.ArtistasSeleccionados, Model.ListaArtistasCancion, new { @class = "form-control listbox" })
+                    @Html.ValidationMessageFor(model => model.ArtistasSeleccionados, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cancion.Duracion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cancion.Duracion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cancion.Duracion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cancion.Año, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cancion.Año, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cancion.Año, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar al Indice", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/cancion.js"></script>
+}

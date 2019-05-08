@@ -1,0 +1,53 @@
+﻿@model MVCDiscografia.ViewModels.CancionViewVM
+
+@{
+    ViewBag.Title = "Detalles de la Canción";
+}
+
+<h2>Detalles de la Canción</h2>
+
+<div>
+    <h4>Canción</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.losArtistas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.losArtistas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cancion.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cancion.Nombre)
+        </dd>
+
+        <dt>
+            @{ string duracion = Model.Cancion.Duracion != null ?
+               Model.Cancion.Duracion.Value.Hours > 0 ? Model.Cancion.Duracion.Value.ToString(@"hh\:mm\:ss") : Model.Cancion.Duracion.Value.ToString(@"mm\:ss")
+               : String.Empty; }
+            @Html.DisplayNameFor(model => Model.Cancion.Duracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cancion.Año)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cancion.Año)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Cancion.CancionID }) |
+    @Html.ActionLink("Regresar al Indice", "Index")
+</p>

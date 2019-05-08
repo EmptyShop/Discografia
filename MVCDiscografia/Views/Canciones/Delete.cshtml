@@ -1,0 +1,56 @@
+﻿@model MVCDiscografia.ViewModels.CancionViewVM
+
+@{
+    ViewBag.Title = "Eliminar Canción";
+}
+
+<h2>Eliminar Canción</h2>
+
+<h3>¿Estás seguro que quieres eliminar esta Canción?</h3>
+<div>
+    <h4>Canción</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.losArtistas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.losArtistas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cancion.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cancion.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cancion.Duracion)
+        </dt>
+
+        <dd>
+            @{ string duracion = Model.Cancion.Duracion != null ? Model.Cancion.Duracion.Value.ToString(@"mm\:ss") : String.Empty; }
+            @Html.DisplayFor(model => duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cancion.Año)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cancion.Año)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al Indice", "Index")
+        </div>
+    }
+</div>

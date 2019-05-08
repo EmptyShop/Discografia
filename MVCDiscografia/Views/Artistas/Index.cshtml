@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MVCDiscografia.Models.Artista>
+
+@{
+    ViewBag.Title = "Artistas";
+}
+
+<h2>Artistas</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Artista", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pais)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pais)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ArtistaID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ArtistaID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ArtistaID })
+        </td>
+    </tr>
+}
+
+</table>

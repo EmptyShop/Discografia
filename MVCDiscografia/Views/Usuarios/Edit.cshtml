@@ -1,0 +1,75 @@
+﻿@model MVCDiscografia.Models.Usuario
+
+@{
+    ViewBag.Title = "Editar Datos del Usuario";
+}
+
+<h2>Editar Datos del Usuario</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Usuario</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UsuarioID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("cambiarPassword", "Cambiar Password", new { @class = "control-label col-md-2" })
+            <div class="col-md-2 checkbox">
+                <span class="pull-left">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                @Html.CheckBox("cambiarPassword", new { @value = "true" })
+            </div>
+        </div>
+
+        <div class="form-group passwordField">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group passwordField">
+            @Html.LabelFor(model => model.PasswordConfirm, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PasswordConfirm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PasswordConfirm, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Estatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Estatus", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Estatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar al Indice", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/usuario.js"></script>
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MVCDiscografia.ViewModels.AlbumViewVM>
+
+@{
+    ViewBag.Title = "Albums";
+}
+
+<h2>Albums</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Album", "Create")
+</p>
+<div class="row h4 index-layout">
+    <div class="col-md-3">
+        @Html.DisplayNameFor(model => model.losArtistas)
+    </div>
+    <div class="col-md-3">
+        @Html.DisplayNameFor(model => model.Album.Nombre)
+    </div>
+    <div class="col-md-2">
+        @Html.DisplayNameFor(model => model.Album.FechaGrabacion)
+    </div>
+    <div class="col-md-2">
+        @Html.DisplayNameFor(model => model.Album.FechaAdquisicion)
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+@foreach (var item in Model) {
+<div class="row index-layout">
+    <div class="col-md-3">
+        @Html.DisplayFor(modelItem => item.losArtistas)
+    </div>
+    <div class="col-md-3">
+        @Html.DisplayFor(modelItem => item.Album.Nombre)
+    </div>
+    <div class="col-md-2">
+        @{
+            string fechaGrabacion = item.Album.FechaGrabacion.Value.ToString("dd-MMM-yy");
+            string fechaAdquisicion = item.Album.FechaAdquisicion.Value.ToString("dd-MMM-yy");
+        }
+        @Html.DisplayFor(modelItem => fechaGrabacion)
+    </div>
+    <div class="col-md-2">
+        @Html.DisplayFor(modelItem => fechaAdquisicion)
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("Editar", "Edit", new { id=item.Album.AlbumID }) |
+        @Html.ActionLink("Detalles", "Details", new { id=item.Album.AlbumID }) |
+        @Html.ActionLink("Eliminar", "Delete", new { id=item.Album.AlbumID })
+    </div>
+</div>
+}
+

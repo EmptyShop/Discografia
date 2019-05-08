@@ -1,0 +1,82 @@
+﻿@model MVCDiscografia.ViewModels.AlbumViewVM
+
+@{
+    ViewBag.Title = "Eliminar Album";
+}
+
+<h2>Eliminar Album</h2>
+
+<h3>¿Estás seguro que quieres eliminar este Album?</h3>
+<div>
+    <h4>Album</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.losArtistas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.losArtistas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Album.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Album.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Album.FechaGrabacion)
+        </dt>
+
+        <dd>
+            @{
+                string fechaGrabacion = Model.Album.FechaGrabacion.Value.ToString("dd-MMM-yy");
+                string fechaAdquisicion = Model.Album.FechaAdquisicion.Value.ToString("dd-MMM-yy");
+            }
+            @Html.DisplayFor(model => fechaGrabacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Album.FechaAdquisicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => fechaAdquisicion)
+        </dd>
+
+        <dt>
+            Formato
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Album.Formato.Descripcion)
+        </dd>
+
+        <dt>
+            Tracklist
+        </dt>
+
+        @{
+            foreach (var c in Model.elTracklist)
+            {
+                <dd>
+                    @Html.DisplayFor(p => c.posicion) -
+                    @Html.DisplayFor(p => c.nombreCancion)
+                </dd>
+            }
+        }        
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al Indice", "Index")
+        </div>
+    }
+</div>

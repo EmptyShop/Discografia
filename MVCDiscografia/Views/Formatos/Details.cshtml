@@ -1,0 +1,26 @@
+﻿@model MVCDiscografia.Models.Formato
+
+@{
+    ViewBag.Title = "Detalles del Formato";
+}
+
+<h2>Detalles del Formato</h2>
+
+<div>
+    <h4>Formato</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.FormatoID }) |
+    @Html.ActionLink("Regresar al Indice", "Index")
+</p>

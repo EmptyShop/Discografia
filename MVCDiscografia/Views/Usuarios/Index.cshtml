@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MVCDiscografia.Models.Usuario>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<h2>Usuarios</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Usuario", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User)
+        </td>
+        <td>
+            @{
+                string estatus = item.Estatus == 1 ? "Activo" : "Suspendido";
+            }
+            @Html.DisplayFor(modelItem => estatus)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.UsuarioID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.UsuarioID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.UsuarioID })
+        </td>
+    </tr>
+}
+
+</table>

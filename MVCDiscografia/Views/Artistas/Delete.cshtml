@@ -1,0 +1,40 @@
+﻿@model MVCDiscografia.Models.Artista
+
+@{
+    ViewBag.Title = "Eliminar Artista";
+}
+
+<h2>Eliminar Artista</h2>
+
+<h3>¿Estás seguro que quieres eliminar este Artista?</h3>
+<div>
+    <h4>Artista</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al Indice", "Index")
+        </div>
+    }
+</div>

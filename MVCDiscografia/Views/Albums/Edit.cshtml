@@ -1,0 +1,133 @@
+﻿@model MVCDiscografia.Models.Album
+
+@{
+    ViewBag.Title = "Editar Datos del Album";
+}
+
+<h2>Editar Datos del Album</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Album</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AlbumID)
+
+        <div class="form-group">
+            @Html.Label("listaArtistas", "Artistas", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10 contenedorListas">
+                <div class="column-left">
+                    @Html.Label("listaArtistas", "Lista de Artistas", htmlAttributes: new { @class = "control-label" })<br />
+                    @Html.ListBox("listaArtistas", null, htmlAttributes: new { @class = "form-control listbox" })
+                </div>
+
+                <div class="column-center">
+                    <button type="button" id="asignar" class="btn-xs">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                    <button type="button" id="desasignar" class="btn-xs">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                </div>
+
+                <div class="column-right">
+                    @Html.Label("listaArtistasSeleccionados", "Artistas del Album", htmlAttributes: new { @class = "control-label" })<br />
+                    @Html.ListBox("listaArtistasSeleccionados", null, htmlAttributes: new { @class = "form-control listbox" })
+                    @Html.ValidationMessageFor(model => model.Artistas, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @{
+            string fechaGrabacion = Model.FechaGrabacion.Value.ToString("dd-MM-yy");
+            string fechaAdquisicion = Model.FechaAdquisicion.Value.ToString("dd-MM-yy");
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaGrabacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaGrabacion, new { htmlAttributes = new { @Value = fechaGrabacion, @class = "form-control" } })
+                <span class="help-block">(dd-mm-aaaa)</span>
+                @Html.ValidationMessageFor(model => model.FechaGrabacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaAdquisicion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaAdquisicion, new { htmlAttributes = new { @Value = fechaAdquisicion, @class = "form-control" } })
+                <span class="help-block">(dd-mm-aaaa)</span>
+                @Html.ValidationMessageFor(model => model.FechaAdquisicion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Formato_FormatoID, "Formato", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Formato_FormatoID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Formato_FormatoID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("listaCanciones", "Canciones", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10 contenedorListas">
+                <div class="column-left">
+                    @Html.Label("listaCanciones", "Lista de Canciones", htmlAttributes: new { @class = "control-label" })<br />
+                    @Html.ListBox("listaCanciones", null, htmlAttributes: new { @class = "form-control listbox input-sm" })
+                </div>
+
+                <div class="column-center">
+                    <button type="button" id="asignarCancion" class="btn-xs">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                    <button type="button" id="desasignarCancion" class="btn-xs">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                </div>
+
+                <div class="column-right">
+                    @Html.Label("listaCancionesSeleccionadas", "Tracklist", htmlAttributes: new { @class = "control-label" })<br />
+                    @Html.ListBox("listaCancionesSeleccionadas", null, htmlAttributes: new { @class = "form-control listbox input-sm" })
+                    @Html.ValidationMessageFor(model => model.Tracklist, "", new { @class = "text-danger" })
+                </div>
+                <div class="column-center">
+                    <button type="button" id="arriba" class="btn-xs" title="alt-u">
+                        <span class="glyphicon glyphicon-chevron-up"></span>
+                    </button>
+                    <br />
+                    <button type="button" id="abajo" class="btn-xs" title="alt-w">
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar al Indice", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/album.js"></script>
+}
