@@ -41,7 +41,7 @@ namespace Discografia
                             String.Empty, (str, a) => str + a.Nombre + ", ",
                             str => str.Substring(0, str.Length - 2))
                         }
-                        ).OrderBy(s => s.losArtistas).ThenBy(s => s.Nombre).ToList();
+                        ).OrderBy(s =>s.losArtistas).ThenBy(s => s.Nombre).ToList();
                 return setCanciones;
             }
             catch (Exception)

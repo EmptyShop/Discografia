@@ -1201,11 +1201,16 @@ namespace Discografia
                                     nuevoAlbum.FechaAdquisicion = dtpAdquisicion.Value;
                                 }
 
+                                Artista artistaAlbum;
                                 //Asignación de la lista de artistas
                                 foreach (Artista elemento in lstArtistasAlbum.Items)
                                 {
-                                    nuevoAlbum.Artistas.Add(elemento);
-                                    contexto.Entry(elemento).State = System.Data.Entity.EntityState.Unchanged;
+                                    /*obtenemos el artista del contexto porque si lo tomamos de la lista ocasiona 
+                                    problemas cuando ya se había seleccionado un album previamente*/
+                                    artistaAlbum = contexto.Artistas.Find(elemento.ArtistaID);
+
+                                    nuevoAlbum.Artistas.Add(artistaAlbum);
+                                    contexto.Entry(artistaAlbum).State = System.Data.Entity.EntityState.Unchanged;
                                 }
 
                                 contexto.Albums.Add(nuevoAlbum);
