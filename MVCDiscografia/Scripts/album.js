@@ -3,6 +3,13 @@ $(function () {
     $.validator.methods.date = function (value, element) {
         return this.optional(element) || parseDateDMY(value);
     };
+    /*$.validator.addMethod(
+        "date",
+        function (value, element) {
+            return this.optional(element) || parseDateDMY(value);
+        },
+        "Fecha no válida."
+    );*/
 
     function parseDateDMY(dateString) {
         // revisar el patrón
