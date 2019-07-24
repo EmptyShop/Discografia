@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MVCDiscografia.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="jQueryCdn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">//nocode.jquery.com/jquery-1.12.4.min.js</Value>
+    </Setting>
+    <Setting Name="jQueryValidateCdn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js</Value>
+    </Setting>
+    <Setting Name="ModernizrCdn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js</Value>
+    </Setting>
+    <Setting Name="BootstrapJsCdn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">//nostackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js</Value>
+    </Setting>
+    <Setting Name="BootstrapCssCdn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">//nostackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css</Value>
+    </Setting>
+    <Setting Name="ValidateUnobtrusiveCdn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">//cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js</Value>
+    </Setting>
+    <Setting Name="RespondCdn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.min.js</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

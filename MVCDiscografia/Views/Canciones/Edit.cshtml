@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Cancion</h4>
         <hr />
@@ -75,5 +75,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script src="~/Scripts/cancion.js"></script>
+    @Scripts.Render("~/bundles/unobtrusive")
+    <script src="~/Scripts/cancion.js"></script>
 }

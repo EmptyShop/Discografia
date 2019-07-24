@@ -5,78 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="@Url.Content("~/Content/garageband.ico")" />
     <title>@ViewBag.Title - Discografía</title>
+    @Styles.Render("~/Content/cssbootstrap")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     @{
-        if (Request.IsAuthenticated) { 
-    
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Discografía", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        if (Request.IsAuthenticated)
+        {
+
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Discografía", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Formatos<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Listado", "Index", "Formatos")</li>
+                                    <li>@Html.ActionLink("Nuevo Formato", "Create", "Formatos")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Artistas<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Listado", "Index", "Artistas")</li>
+                                    <li>@Html.ActionLink("Nuevo Artista", "Create", "Artistas")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Canciones<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Listado", "Index", "Canciones")</li>
+                                    <li>@Html.ActionLink("Nueva Canción", "Create", "Canciones")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Albums<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Listado", "Index", "Albums")</li>
+                                    <li>@Html.ActionLink("Nuevo Album", "Create", "Albums")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Usuarios<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Listado", "Index", "Usuarios")</li>
+                                    <li>@Html.ActionLink("Nuevo Usuario", "Create", "Usuarios")</li>
+                                </ul>
+                            </li>
+                            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Cerrar Sesión", "LogOff", "Account")</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Formatos<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Listado", "Index", "Formatos")</li>
-                            <li>@Html.ActionLink("Nuevo Formato", "Create", "Formatos")</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Artistas<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Listado", "Index", "Artistas")</li>
-                            <li>@Html.ActionLink("Nuevo Artista", "Create", "Artistas")</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Canciones<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Listado", "Index", "Canciones")</li>
-                            <li>@Html.ActionLink("Nueva Canción", "Create", "Canciones")</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Albums<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Listado", "Index", "Albums")</li>
-                            <li>@Html.ActionLink("Nuevo Album", "Create", "Albums")</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Usuarios<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Listado", "Index", "Usuarios")</li>
-                            <li>@Html.ActionLink("Nuevo Usuario", "Create", "Usuarios")</li>
-                        </ul>
-                    </li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Cerrar Sesión","LogOff","Account")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
         }
     }
     <div class="container body-content">
@@ -89,6 +91,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/respond")
     @RenderSection("scripts", required: false)
 </body>
 </html>

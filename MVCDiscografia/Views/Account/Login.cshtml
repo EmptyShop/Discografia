@@ -7,10 +7,10 @@
 <h2>Acceso a Discografía</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Ingresa usuario y contraseña</h4>
         <hr />
@@ -41,4 +41,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/unobtrusive")
 }
