@@ -52,7 +52,8 @@ $.fn.sortSelect = function () {
 
     this.empty().append(opciones);
 
-    $('#' + this.attr('id') + ' option').attr('selected', false);
+    //$('#' + this.attr('id') + ' option').attr('selected', false); //Para jQuery < 1.6
+    $('#' + this.attr('id') + ' option').prop('selected', false);
 }
 
 $.fn.sortPosicion = function () {
@@ -188,6 +189,15 @@ $("#abajo").on("click", abajo); //mover track con mouse
 $("body").on('keyup', function () { //mover track con hot key
     if (event.altKey && event.keyCode == 87) {
         abajo();
+    }
+});
+
+$("body").on('keydown', function () {   //prevenir hot keys predefinidas por el browser
+    if (!event.metaKey &&
+        (event.altKey &&
+            (event.keyCode == 85 || event.keyCode == 87)
+        )) {
+        event.preventDefault();
     }
 });
 

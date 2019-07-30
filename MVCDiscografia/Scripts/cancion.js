@@ -10,7 +10,8 @@ $.fn.sortSelect = function () {
 
     this.empty().append(opciones);
 
-    $('#' + this.attr('id') + ' option').attr('selected', false);
+    //$('#' + this.attr('id') + ' option').attr('selected', false); //para jQuery < 1.6
+    $('#' + this.attr('id') + ' option').prop('selected', false);
 }
 
 function moverItem(event) {

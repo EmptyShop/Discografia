@@ -25,7 +25,7 @@ namespace MVCDiscografia.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//nocode.jquery.com/jquery-1.12.4.min.js")]
+        [global::System.Configuration.DefaultSettingValueAttribute("//code.jquery.com/jquery-3.4.1.min.js")]
         public string jQueryCdn {
             get {
                 return ((string)(this["jQueryCdn"]));
@@ -52,7 +52,7 @@ namespace MVCDiscografia.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//nostackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")]
+        [global::System.Configuration.DefaultSettingValueAttribute("//stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")]
         public string BootstrapJsCdn {
             get {
                 return ((string)(this["BootstrapJsCdn"]));
@@ -61,7 +61,7 @@ namespace MVCDiscografia.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//nostackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")]
+        [global::System.Configuration.DefaultSettingValueAttribute("//stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")]
         public string BootstrapCssCdn {
             get {
                 return ((string)(this["BootstrapCssCdn"]));
@@ -80,7 +80,7 @@ namespace MVCDiscografia.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.min.js")]
+        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.0/respond.min.js")]
         public string RespondCdn {
             get {
                 return ((string)(this["RespondCdn"]));

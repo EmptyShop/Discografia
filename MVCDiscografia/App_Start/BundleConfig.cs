@@ -15,7 +15,7 @@ namespace MVCDiscografia
             {
                 //jQuery
                 ScriptBundle bndljQuery = new ScriptBundle("~/bundles/jquery",
-                   Properties.Settings.Default.jQueryCdn    //@"//code.jquery.com/jquery-1.12.4.min.js"
+                   Properties.Settings.Default.jQueryCdn    //@"//code.jquery.com/jquery-3.4.1.min.js"
                 );
                 bndljQuery.Include("~/Scripts/jquery-{version}.js");
                 bndljQuery.CdnFallbackExpression = "window.jQuery";
@@ -51,13 +51,16 @@ namespace MVCDiscografia
                 ScriptBundle bndlBootstrapJs = new ScriptBundle("~/bundles/bootstrap",
                     Properties.Settings.Default.BootstrapJsCdn  //@"//stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
                     );
-                bndlBootstrapJs.Include("~/Scripts/bootstrap.js");
+                bndlBootstrapJs.Include(
+                    "~/Scripts/bootstrap.js",
+                    "~/Scripts/popper.js"
+                );
                 bndlBootstrapJs.CdnFallbackExpression = "$.fn.modal";
                 bundles.Add(bndlBootstrapJs);
 
                 //respondJS
                 ScriptBundle bndlRespondJs = new ScriptBundle("~/bundles/respond",
-                    Properties.Settings.Default.RespondCdn  //@"//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.min.js"
+                    Properties.Settings.Default.RespondCdn  //@"//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.0/respond.min.js"
                     );
                 bndlRespondJs.Include("~/Scripts/respond.js");
                 bndlRespondJs.CdnFallbackExpression = "window.respond";
@@ -97,8 +100,9 @@ namespace MVCDiscografia
                 bundles.Add(new ScriptBundle("~/bundles/respond").Include(
                           "~/Scripts/respond.js"));
 
+                bundles.Add(new StyleBundle("~/Content/cssbootstrap").Include(
+                          "~/Content/bootstrap.css"));
                 bundles.Add(new StyleBundle("~/Content/css").Include(
-                          "~/Content/bootstrap.css",
                           "~/Content/site.css"));
             }
 

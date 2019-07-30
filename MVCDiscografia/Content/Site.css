@@ -34,6 +34,9 @@ textarea {
 .listbox[multiple] {
   height: 10em;
 }
+select.small{
+    font-size: 12px;
+}
 .index-layout {
     padding-left: 10px;
     padding-right: 10px;
@@ -42,4 +45,7 @@ textarea {
     border-bottom-style:solid;
     border-bottom-width: 1px;
     border-bottom-color: lightgray;
+}
+input[type="button"].arrow {
+    font-weight: bolder;
 }
