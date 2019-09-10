@@ -22,6 +22,8 @@ namespace Discografia
         public virtual ICollection<Artista> Artistas { get; set; }
         public virtual ICollection<CancionAlbums> Tracklist { get; set; }
 
+        public int? DiscogsReleaseCode { get; set; }
+
         public Album()
         {
             this.Artistas = new HashSet<Artista>();

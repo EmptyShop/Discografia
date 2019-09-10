@@ -124,6 +124,8 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lstUsuarios = new System.Windows.Forms.ListBox();
             this.lblUsuarios = new System.Windows.Forms.Label();
+            this.lblDiscogsReleaseCode = new System.Windows.Forms.Label();
+            this.txtDiscogsReleaseCode = new System.Windows.Forms.TextBox();
             this.tabMenu.SuspendLayout();
             this.tabArtista.SuspendLayout();
             this.panelArtistas.SuspendLayout();
@@ -591,6 +593,8 @@
             // 
             // panelAlbum
             // 
+            this.panelAlbum.Controls.Add(this.txtDiscogsReleaseCode);
+            this.panelAlbum.Controls.Add(this.lblDiscogsReleaseCode);
             this.panelAlbum.Controls.Add(this.dgvCancionesAlbum);
             this.panelAlbum.Controls.Add(this.dgvCanciones);
             this.panelAlbum.Controls.Add(this.btnAsignarArtistaAlbum);
@@ -1181,6 +1185,24 @@
             this.lblUsuarios.TabIndex = 0;
             this.lblUsuarios.Text = "Usuarios";
             // 
+            // lblDiscogsReleaseCode
+            // 
+            this.lblDiscogsReleaseCode.AutoSize = true;
+            this.lblDiscogsReleaseCode.Location = new System.Drawing.Point(442, 94);
+            this.lblDiscogsReleaseCode.Name = "lblDiscogsReleaseCode";
+            this.lblDiscogsReleaseCode.Size = new System.Drawing.Size(132, 15);
+            this.lblDiscogsReleaseCode.TabIndex = 16;
+            this.lblDiscogsReleaseCode.Text = "Discogs Release Code";
+            // 
+            // txtDiscogsReleaseCode
+            // 
+            this.txtDiscogsReleaseCode.Location = new System.Drawing.Point(581, 94);
+            this.txtDiscogsReleaseCode.MaxLength = 10;
+            this.txtDiscogsReleaseCode.Name = "txtDiscogsReleaseCode";
+            this.txtDiscogsReleaseCode.Size = new System.Drawing.Size(100, 20);
+            this.txtDiscogsReleaseCode.TabIndex = 17;
+            this.txtDiscogsReleaseCode.Leave += new System.EventHandler(this.txtDiscogsReleaseCode_Leave);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1317,5 +1339,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colOrdenCanciones;
         private System.Windows.Forms.CheckBox chxFijarArtistasCancion;
         private System.Windows.Forms.CheckBox chxFijarAñoCancion;
+        private System.Windows.Forms.TextBox txtDiscogsReleaseCode;
+        private System.Windows.Forms.Label lblDiscogsReleaseCode;
     }
 }

@@ -71,7 +71,7 @@ namespace MVCDiscografia.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
-            [Bind(Include = "AlbumID,Nombre,FechaGrabacion,FechaAdquisicion,Formato_FormatoID,Artistas")] Album album,
+            [Bind(Include = "AlbumID,Nombre,FechaGrabacion,FechaAdquisicion,Formato_FormatoID,Artistas,DiscogsReleaseCode")] Album album,
             List<int> listaArtistasSeleccionados, List<string> listaCancionesSeleccionadas)
         {
             ICollection<Artista> artistasSeleccionados = new HashSet<Artista>();
@@ -280,7 +280,7 @@ namespace MVCDiscografia.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include = "AlbumID,Nombre,FechaGrabacion,FechaAdquisicion,Formato_FormatoID")] Album album,
+            [Bind(Include = "AlbumID,Nombre,FechaGrabacion,FechaAdquisicion,Formato_FormatoID,DiscogsReleaseCode")] Album album,
             List<int> listaArtistasSeleccionados, List<string> listaCancionesSeleccionadas)
         {
             ICollection<Artista> artistasSeleccionados = new HashSet<Artista>();
@@ -356,6 +356,7 @@ namespace MVCDiscografia.Controllers
                             albumDB.Formato = album.Formato;
                             albumDB.FechaAdquisicion = album.FechaAdquisicion;
                             albumDB.FechaGrabacion = album.FechaGrabacion;
+                            albumDB.DiscogsReleaseCode = album.DiscogsReleaseCode;
 
                             //a partir de aquí, nos olvidamos del objeto album y trabajamos con albumDB.
                             //obtenemos la lista de artistas a eliminar (los artistas desasignados por el usuario)

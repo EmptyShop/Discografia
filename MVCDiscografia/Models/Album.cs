@@ -27,6 +27,9 @@ namespace MVCDiscografia.Models
 
         public virtual ICollection<CancionAlbums> Tracklist { get; set; }
         public virtual ICollection<Artista> Artistas { get; set; }
+
+        [Display(Name = "Código Discogs")]
+        public int? DiscogsReleaseCode { get; set; }
         
         public Album()
         {

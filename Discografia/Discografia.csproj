@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201505260027585_Initial.Designer.cs">
       <DependentUpon>201505260027585_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909102018294_Initial1.cs" />
+    <Compile Include="Migrations\201909102018294_Initial1.Designer.cs">
+      <DependentUpon>201909102018294_Initial1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Album.cs" />
     <Compile Include="Model\Artista.cs" />
     <Compile Include="Model\Cancion.cs" />
@@ -126,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505260027585_Initial.resx">
       <DependentUpon>201505260027585_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909102018294_Initial1.resx">
+      <DependentUpon>201909102018294_Initial1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

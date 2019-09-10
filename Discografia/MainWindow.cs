@@ -232,6 +232,7 @@ namespace Discografia
             cboFormato.SelectedValue = -1;
             dtpGrabacion.Value = DateTime.Today;
             dtpAdquisicion.Value = DateTime.Today;
+            txtDiscogsReleaseCode.Text = String.Empty;
             lstArtistasAlbum.Items.Clear();
             ActualizaListBoxAlbumArtistas();
             dgvCancionesAlbum.Rows.Clear();
@@ -958,6 +959,8 @@ namespace Discografia
                         cboFormato.SelectedItem = album.Formato;
                         dtpGrabacion.Value = album.FechaGrabacion.Value;
                         dtpAdquisicion.Value = album.FechaAdquisicion.Value;
+                        txtDiscogsReleaseCode.Text = 
+                            album.DiscogsReleaseCode != null ? album.DiscogsReleaseCode.Value.ToString() : String.Empty;
 
                         //llenado de la lista de artistas del album
                         var artistasAlbum = album.Artistas.OrderBy(s => s.Nombre);
@@ -1200,6 +1203,10 @@ namespace Discografia
                                 {
                                     nuevoAlbum.FechaAdquisicion = dtpAdquisicion.Value;
                                 }
+                                if (txtDiscogsReleaseCode.Text != String.Empty)
+                                {
+                                    nuevoAlbum.DiscogsReleaseCode = Convert.ToInt32(txtDiscogsReleaseCode.Text);
+                                }
 
                                 Artista artistaAlbum;
                                 //Asignación de la lista de artistas
@@ -1272,6 +1279,20 @@ namespace Discografia
             }
         }
 
+        //validación de formato de Release code de Discogs (numérico)
+        private void txtDiscogsReleaseCode_Leave(object sender, EventArgs e)
+        {
+            txtDiscogsReleaseCode.Text.Trim();
+            string s = txtDiscogsReleaseCode.Text;
+            Int32 r;
+
+            if (s != String.Empty && !Int32.TryParse(s, out r))
+            {
+                MessageBox.Show("El Release Code no es válido.", "Validación");
+                txtDiscogsReleaseCode.Text = String.Empty;
+            }
+        }
+
         //modificar un álbum en la BD
         private void btnModificarAlbum_Click(object sender, EventArgs e)
         {
@@ -1308,6 +1329,7 @@ namespace Discografia
                                     album.Formato = contexto.Formatos.Find(cboFormato.SelectedValue);
                                     album.FechaGrabacion = dtpGrabacion.Value != DateTime.Today ? dtpGrabacion.Value : (DateTime?)null;
                                     album.FechaAdquisicion = dtpAdquisicion.Value != DateTime.Today ? dtpAdquisicion.Value : (DateTime?)null;
+                                    album.DiscogsReleaseCode = txtDiscogsReleaseCode.Text.Trim() != String.Empty ? Convert.ToInt32(txtDiscogsReleaseCode.Text) : (Int32?)null;
 
                                     //obtenemos la lista de artistas a eliminar (los artistas desasignados por el uuario)
                                     var artistasAEliminar = album.Artistas.AsEnumerable()
