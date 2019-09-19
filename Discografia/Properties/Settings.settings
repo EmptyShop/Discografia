@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Discografia.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DiscogsBaseURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.discogs.com</Value>
+    </Setting>
+    <Setting Name="DiscogsUserAgent" Type="System.String" Scope="User">
+      <Value Profile="(Default)">discografia.mx/1.0</Value>
+    </Setting>
+    <Setting Name="DiscogsConsumerKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DXOHuxEAoxtmsQEKXkFn</Value>
+    </Setting>
+    <Setting Name="DiscogsConsumerSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)">YjwtZniyLIiCRPCMfVCriLUKdybHnFxX</Value>
+    </Setting>
+    <Setting Name="DiscogsGetReleaseUri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/releases/</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

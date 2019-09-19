@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using MVCDiscografia.Models;
 using MVCDiscografia.ViewModels;
@@ -28,7 +33,7 @@ namespace MVCDiscografia.Controllers
         }
 
         // GET: Albums/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -41,6 +46,65 @@ namespace MVCDiscografia.Controllers
             }
             //detalle del album con artistas y tracklist incluídos
             AlbumViewVM albumVM = new AlbumViewVM(album);
+
+            if (album.DiscogsReleaseCode != null)
+            {
+                //Servicio REST para obtener información de Discogs.com
+
+                //parámetros de Discogs
+                string DiscogsBaseURL = Properties.Settings.Default.DiscogsBaseURL;
+                string DiscogsUserAgent = Properties.Settings.Default.DiscogsUserAgent;
+                string DiscogsConsumerKey = Properties.Settings.Default.DiscogsConsumerKey;
+                string DiscogsConsumerSecret = Properties.Settings.Default.DiscogsConsumerSecret;
+                string DiscogsGetReleaseUri = Properties.Settings.Default.DiscogsGetReleaseUri;
+
+                try
+                {
+                    using (var clientHttp = new HttpClient())
+                    {
+                        //usamos la versión 1.2 del protcolo TLS para peticiones seguras
+                        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                        clientHttp.BaseAddress = new Uri(DiscogsBaseURL);
+                        clientHttp.DefaultRequestHeaders.Clear();
+
+                        //Encabezados requeridos
+                        clientHttp.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        clientHttp.DefaultRequestHeaders.UserAgent.ParseAdd(DiscogsUserAgent);
+                        clientHttp.DefaultRequestHeaders.Authorization =
+                            new AuthenticationHeaderValue("Discogs", string.Format("key={0}, secret={1}",
+                                DiscogsConsumerKey, DiscogsConsumerSecret));
+
+                        //se ejecuta el servicio REST
+                        HttpResponseMessage respuesta = await clientHttp.GetAsync(
+                            string.Concat(DiscogsGetReleaseUri, album.DiscogsReleaseCode.Value.ToString())
+                            );
+
+                        //verificamos la respuesta
+                        if (respuesta.IsSuccessStatusCode)
+                        {
+                            //obtenemos la respuesta del servicio
+                            string res = respuesta.Content.ReadAsStringAsync().Result;
+
+                            albumVM.datosDiscogs = new AlbumViewVM.DiscogsView();
+
+                            //deserializamos los datos recibidos
+                            JObject datosDiscogs = JObject.Parse(res);
+                            albumVM.datosDiscogs = datosDiscogs.ToObject<AlbumViewVM.DiscogsView>();
+                            albumVM.datosDiscogs.disquera = (string)datosDiscogs.SelectToken("labels[0].name");
+                            albumVM.datosDiscogs.numCatalogo = (string)datosDiscogs.SelectToken("labels[0].catno");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "No se encontró la información de Discogs.");
+                        }
+                    }
+                }catch(Exception e)
+                {
+                    ModelState.AddModelError("", "Ocurrió un error al obtener la información de Discogs: " + e.Message);
+                }
+            }
+
             return View(albumVM);
         }
 

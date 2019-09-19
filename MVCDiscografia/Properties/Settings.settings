@@ -23,5 +23,20 @@
     <Setting Name="RespondCdn" Type="System.String" Scope="Application">
       <Value Profile="(Default)">//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.0/respond.min.js</Value>
     </Setting>
+    <Setting Name="DiscogsBaseURL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://api.discogs.com</Value>
+    </Setting>
+    <Setting Name="DiscogsUserAgent" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">discografia.mx/1.0</Value>
+    </Setting>
+    <Setting Name="DiscogsConsumerKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DXOHuxEAoxtmsQEKXkFn</Value>
+    </Setting>
+    <Setting Name="DiscogsConsumerSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">YjwtZniyLIiCRPCMfVCriLUKdybHnFxX</Value>
+    </Setting>
+    <Setting Name="DiscogsGetReleaseUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/releases/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

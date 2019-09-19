@@ -22,5 +22,65 @@ namespace Discografia.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.discogs.com")]
+        public string DiscogsBaseURL {
+            get {
+                return ((string)(this["DiscogsBaseURL"]));
+            }
+            set {
+                this["DiscogsBaseURL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("discografia.mx/1.0")]
+        public string DiscogsUserAgent {
+            get {
+                return ((string)(this["DiscogsUserAgent"]));
+            }
+            set {
+                this["DiscogsUserAgent"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DXOHuxEAoxtmsQEKXkFn")]
+        public string DiscogsConsumerKey {
+            get {
+                return ((string)(this["DiscogsConsumerKey"]));
+            }
+            set {
+                this["DiscogsConsumerKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("YjwtZniyLIiCRPCMfVCriLUKdybHnFxX")]
+        public string DiscogsConsumerSecret {
+            get {
+                return ((string)(this["DiscogsConsumerSecret"]));
+            }
+            set {
+                this["DiscogsConsumerSecret"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/releases/")]
+        public string DiscogsGetReleaseUri {
+            get {
+                return ((string)(this["DiscogsGetReleaseUri"]));
+            }
+            set {
+                this["DiscogsGetReleaseUri"] = value;
+            }
+        }
     }
 }

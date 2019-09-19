@@ -70,6 +70,11 @@
             this.btnAgregarAlbum = new System.Windows.Forms.Button();
             this.btnModificarAlbum = new System.Windows.Forms.Button();
             this.panelAlbum = new System.Windows.Forms.Panel();
+            this.lblNumCatalogo = new System.Windows.Forms.Label();
+            this.lblDisquera = new System.Windows.Forms.Label();
+            this.pctCover = new System.Windows.Forms.PictureBox();
+            this.txtDiscogsReleaseCode = new System.Windows.Forms.TextBox();
+            this.lblDiscogsReleaseCode = new System.Windows.Forms.Label();
             this.dgvCancionesAlbum = new System.Windows.Forms.DataGridView();
             this.CancionID_AlbumCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPosicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,8 +129,8 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lstUsuarios = new System.Windows.Forms.ListBox();
             this.lblUsuarios = new System.Windows.Forms.Label();
-            this.lblDiscogsReleaseCode = new System.Windows.Forms.Label();
-            this.txtDiscogsReleaseCode = new System.Windows.Forms.TextBox();
+            this.txtDisquera = new System.Windows.Forms.TextBox();
+            this.txtNumCatalogo = new System.Windows.Forms.TextBox();
             this.tabMenu.SuspendLayout();
             this.tabArtista.SuspendLayout();
             this.panelArtistas.SuspendLayout();
@@ -134,6 +139,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrCancion)).BeginInit();
             this.tabAlbum.SuspendLayout();
             this.panelAlbum.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCancionesAlbum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCanciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrAlbum)).BeginInit();
@@ -593,6 +599,11 @@
             // 
             // panelAlbum
             // 
+            this.panelAlbum.Controls.Add(this.txtNumCatalogo);
+            this.panelAlbum.Controls.Add(this.txtDisquera);
+            this.panelAlbum.Controls.Add(this.lblNumCatalogo);
+            this.panelAlbum.Controls.Add(this.lblDisquera);
+            this.panelAlbum.Controls.Add(this.pctCover);
             this.panelAlbum.Controls.Add(this.txtDiscogsReleaseCode);
             this.panelAlbum.Controls.Add(this.lblDiscogsReleaseCode);
             this.panelAlbum.Controls.Add(this.dgvCancionesAlbum);
@@ -619,6 +630,52 @@
             this.panelAlbum.Name = "panelAlbum";
             this.panelAlbum.Size = new System.Drawing.Size(898, 479);
             this.panelAlbum.TabIndex = 2;
+            // 
+            // lblNumCatalogo
+            // 
+            this.lblNumCatalogo.AutoSize = true;
+            this.lblNumCatalogo.Location = new System.Drawing.Point(719, 223);
+            this.lblNumCatalogo.Name = "lblNumCatalogo";
+            this.lblNumCatalogo.Size = new System.Drawing.Size(86, 15);
+            this.lblNumCatalogo.TabIndex = 21;
+            this.lblNumCatalogo.Text = "Núm Catálogo";
+            // 
+            // lblDisquera
+            // 
+            this.lblDisquera.AutoSize = true;
+            this.lblDisquera.Location = new System.Drawing.Point(719, 174);
+            this.lblDisquera.Name = "lblDisquera";
+            this.lblDisquera.Size = new System.Drawing.Size(57, 15);
+            this.lblDisquera.TabIndex = 19;
+            this.lblDisquera.Text = "Disquera";
+            // 
+            // pctCover
+            // 
+            this.pctCover.Location = new System.Drawing.Point(725, 12);
+            this.pctCover.Name = "pctCover";
+            this.pctCover.Size = new System.Drawing.Size(150, 150);
+            this.pctCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctCover.TabIndex = 18;
+            this.pctCover.TabStop = false;
+            this.pctCover.WaitOnLoad = true;
+            // 
+            // txtDiscogsReleaseCode
+            // 
+            this.txtDiscogsReleaseCode.Location = new System.Drawing.Point(581, 94);
+            this.txtDiscogsReleaseCode.MaxLength = 10;
+            this.txtDiscogsReleaseCode.Name = "txtDiscogsReleaseCode";
+            this.txtDiscogsReleaseCode.Size = new System.Drawing.Size(100, 20);
+            this.txtDiscogsReleaseCode.TabIndex = 17;
+            this.txtDiscogsReleaseCode.Leave += new System.EventHandler(this.txtDiscogsReleaseCode_Leave);
+            // 
+            // lblDiscogsReleaseCode
+            // 
+            this.lblDiscogsReleaseCode.AutoSize = true;
+            this.lblDiscogsReleaseCode.Location = new System.Drawing.Point(442, 94);
+            this.lblDiscogsReleaseCode.Name = "lblDiscogsReleaseCode";
+            this.lblDiscogsReleaseCode.Size = new System.Drawing.Size(132, 15);
+            this.lblDiscogsReleaseCode.TabIndex = 16;
+            this.lblDiscogsReleaseCode.Text = "Discogs Release Code";
             // 
             // dgvCancionesAlbum
             // 
@@ -1185,23 +1242,21 @@
             this.lblUsuarios.TabIndex = 0;
             this.lblUsuarios.Text = "Usuarios";
             // 
-            // lblDiscogsReleaseCode
+            // txtDisquera
             // 
-            this.lblDiscogsReleaseCode.AutoSize = true;
-            this.lblDiscogsReleaseCode.Location = new System.Drawing.Point(442, 94);
-            this.lblDiscogsReleaseCode.Name = "lblDiscogsReleaseCode";
-            this.lblDiscogsReleaseCode.Size = new System.Drawing.Size(132, 15);
-            this.lblDiscogsReleaseCode.TabIndex = 16;
-            this.lblDiscogsReleaseCode.Text = "Discogs Release Code";
+            this.txtDisquera.Location = new System.Drawing.Point(722, 192);
+            this.txtDisquera.Name = "txtDisquera";
+            this.txtDisquera.ReadOnly = true;
+            this.txtDisquera.Size = new System.Drawing.Size(161, 20);
+            this.txtDisquera.TabIndex = 22;
             // 
-            // txtDiscogsReleaseCode
+            // txtNumCatalogo
             // 
-            this.txtDiscogsReleaseCode.Location = new System.Drawing.Point(581, 94);
-            this.txtDiscogsReleaseCode.MaxLength = 10;
-            this.txtDiscogsReleaseCode.Name = "txtDiscogsReleaseCode";
-            this.txtDiscogsReleaseCode.Size = new System.Drawing.Size(100, 20);
-            this.txtDiscogsReleaseCode.TabIndex = 17;
-            this.txtDiscogsReleaseCode.Leave += new System.EventHandler(this.txtDiscogsReleaseCode_Leave);
+            this.txtNumCatalogo.Location = new System.Drawing.Point(722, 241);
+            this.txtNumCatalogo.Name = "txtNumCatalogo";
+            this.txtNumCatalogo.ReadOnly = true;
+            this.txtNumCatalogo.Size = new System.Drawing.Size(161, 20);
+            this.txtNumCatalogo.TabIndex = 23;
             // 
             // MainWindow
             // 
@@ -1229,6 +1284,7 @@
             this.tabAlbum.PerformLayout();
             this.panelAlbum.ResumeLayout(false);
             this.panelAlbum.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctCover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCancionesAlbum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCanciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrAlbum)).EndInit();
@@ -1341,5 +1397,10 @@
         private System.Windows.Forms.CheckBox chxFijarAñoCancion;
         private System.Windows.Forms.TextBox txtDiscogsReleaseCode;
         private System.Windows.Forms.Label lblDiscogsReleaseCode;
+        private System.Windows.Forms.Label lblNumCatalogo;
+        private System.Windows.Forms.Label lblDisquera;
+        private System.Windows.Forms.PictureBox pctCover;
+        private System.Windows.Forms.TextBox txtNumCatalogo;
+        private System.Windows.Forms.TextBox txtDisquera;
     }
 }

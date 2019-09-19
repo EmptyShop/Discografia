@@ -7,6 +7,12 @@ using System.Windows.Forms;
 using System.Data.Entity.Validation;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace Discografia
 {
@@ -237,6 +243,15 @@ namespace Discografia
             ActualizaListBoxAlbumArtistas();
             dgvCancionesAlbum.Rows.Clear();
             ActualizaGridAlbumCanciones();
+            VaciaCamposAlbumDiscogs();
+        }
+
+        //vacía los campos de información del álbum obtenida de Discogs
+        public void VaciaCamposAlbumDiscogs()
+        {
+            pctCover.Image = null;
+            txtDisquera.Text = String.Empty;
+            txtNumCatalogo.Text = String.Empty;
         }
 
         //actualiza la columna de posición en el grid de tracklist para tener siempre 
@@ -247,6 +262,76 @@ namespace Discografia
             {
                 row.Cells["colPosicion"].Value = row.Index + 1;
             }
+        }
+
+        //Ejecución de servicio REST para obtener información del álbum en Discogs
+        public static async Task<AlbumDiscogs> RESTAlbumDiscogs(int releaseCode)
+        {
+            string DiscogsBaseURL = Properties.Settings.Default.DiscogsBaseURL;
+            string DiscogsUserAgent = Properties.Settings.Default.DiscogsUserAgent;
+            string DiscogsConsumerKey = Properties.Settings.Default.DiscogsConsumerKey;
+            string DiscogsConsumerSecret = Properties.Settings.Default.DiscogsConsumerSecret;
+            string DiscogsGetReleaseUri = Properties.Settings.Default.DiscogsGetReleaseUri;
+
+            AlbumDiscogs albumDiscogs = new AlbumDiscogs();
+
+            try
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                HttpClient httpClient = new HttpClient();
+
+                httpClient.BaseAddress = new Uri(DiscogsBaseURL);
+                httpClient.DefaultRequestHeaders.Clear();
+
+                //Encabezados requeridos
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(DiscogsUserAgent);
+                httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Discogs", string.Format("key={0}, secret={1}",
+                    DiscogsConsumerKey, DiscogsConsumerSecret));
+
+                //ejecutamos el servicio REST
+                HttpResponseMessage httpResponse = await httpClient.GetAsync(
+                    string.Concat(DiscogsGetReleaseUri, releaseCode.ToString())).ConfigureAwait(false);
+
+                //verificamos que la respuesta sea válida
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    //obtenemos la respuesta del servicio
+                    string res = httpResponse.Content.ReadAsStringAsync().Result;
+
+                    //deserializamos los datos recibidos
+                    JObject datosDiscogs = JObject.Parse(res);
+                    albumDiscogs = datosDiscogs.ToObject<AlbumDiscogs>();
+                    albumDiscogs.disquera = (string)datosDiscogs.SelectToken("labels[0].name");
+                    albumDiscogs.numCatalogo = (string)datosDiscogs.SelectToken("labels[0].catno");
+
+                    //Obtenemos la imagen de la cubierta
+                    httpClient = new HttpClient();
+
+                    //los datos para el web request
+                    Uri UriCoverURL = new Uri(albumDiscogs.coverUrl);
+                    httpClient.BaseAddress = new Uri(String.Concat(UriCoverURL.Scheme,"://", UriCoverURL.Host));
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("image/jpeg"));
+                    httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(DiscogsUserAgent);
+
+                    httpResponse = await httpClient.GetAsync(UriCoverURL.AbsolutePath).ConfigureAwait(false);
+
+                    if (httpResponse.IsSuccessStatusCode)
+                    {
+                        //obtenemos la imagen y la convertimos de un arreglo de bytes a un tipo Image
+                        albumDiscogs.frontCover = 
+                            Image.FromStream(new MemoryStream(httpResponse.Content.ReadAsByteArrayAsync().Result));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se pudo obtener la información desde Discogs: " + e.Message);
+            }
+
+            return albumDiscogs;
         }
 
         public MainWindow()
@@ -949,6 +1034,7 @@ namespace Discografia
                 txtAlbum.Text = dgrAlbum.CurrentRow.Cells["colAlbum"].Value.ToString();
                 lstArtistasAlbum.Items.Clear();
                 dgvCancionesAlbum.Rows.Clear();
+                VaciaCamposAlbumDiscogs();
 
                 //obtenemos los datos complementarios del álbum
                 try
@@ -977,6 +1063,19 @@ namespace Discografia
                             dgvCancionesAlbum.Rows.Add(track.Cancion_CancionID, track.Posicion, track.Cancion.Artistas.First().Nombre, track.Cancion.Nombre);
                         }
                         ActualizaGridAlbumCanciones();
+
+                        //Obtenemos información de Discogs
+                        if (album.DiscogsReleaseCode != null)
+                        {
+                            AlbumDiscogs albumDiscogs = RESTAlbumDiscogs(album.DiscogsReleaseCode.Value).GetAwaiter().GetResult();
+
+                            if (albumDiscogs.coverUrl != null && albumDiscogs.disquera != null && albumDiscogs.numCatalogo != null)
+                            {
+                                pctCover.Image = albumDiscogs.frontCover;
+                                txtDisquera.Text = albumDiscogs.disquera;
+                                txtNumCatalogo.Text = albumDiscogs.numCatalogo;
+                            }
+                        }
                     }
                 }
                 catch (Exception exception)

@@ -75,8 +75,38 @@
             </dd>
             }
         }
+    </dl>
+        @{
+            if (Model.Album.DiscogsReleaseCode != null && Model.datosDiscogs != null)
+            {
+    <dl class="dl-horizontal">
+        <dt>
+            Cubierta
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.datosDiscogs.coverUrl)" alt="Front Cover">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datosDiscogs.disquera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datosDiscogs.disquera)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datosDiscogs.numCatalogo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datosDiscogs.numCatalogo)
+        </dd>
 
     </dl>
+                }
+            }
 </div>
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.Album.AlbumID }) |

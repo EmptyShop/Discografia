@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 using MVCDiscografia.Models;
 
@@ -45,6 +46,8 @@ namespace MVCDiscografia.ViewModels
 
         public IEnumerable<TracklistView> elTracklist { get; set; }
 
+        public DiscogsView datosDiscogs { get; set; }
+
         public AlbumViewVM()
         {
 
@@ -73,6 +76,18 @@ namespace MVCDiscografia.ViewModels
         {
             public short? posicion { get; set; }
             public string nombreCancion { get; set; }
+        }
+
+        public class DiscogsView
+        {
+            [JsonProperty("thumb")]
+            public string coverUrl { get; set; }
+
+            [Display(Name = "Disquera")]
+            public string disquera { get; set; }
+
+            [Display(Name = "Núm Catálogo")]
+            public string numCatalogo { get; set; }
         }
     }
 

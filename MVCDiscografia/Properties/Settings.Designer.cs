@@ -86,5 +86,50 @@ namespace MVCDiscografia.Properties {
                 return ((string)(this["RespondCdn"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.discogs.com")]
+        public string DiscogsBaseURL {
+            get {
+                return ((string)(this["DiscogsBaseURL"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("discografia.mx/1.0")]
+        public string DiscogsUserAgent {
+            get {
+                return ((string)(this["DiscogsUserAgent"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DXOHuxEAoxtmsQEKXkFn")]
+        public string DiscogsConsumerKey {
+            get {
+                return ((string)(this["DiscogsConsumerKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("YjwtZniyLIiCRPCMfVCriLUKdybHnFxX")]
+        public string DiscogsConsumerSecret {
+            get {
+                return ((string)(this["DiscogsConsumerSecret"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/releases/")]
+        public string DiscogsGetReleaseUri {
+            get {
+                return ((string)(this["DiscogsGetReleaseUri"]));
+            }
+        }
     }
 }
