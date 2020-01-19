@@ -54,14 +54,7 @@
         <dd>
             @Html.DisplayFor(model => model.Album.Formato.Descripcion)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Album.DiscogsReleaseCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Album.DiscogsReleaseCode)
-        </dd>
+        <br />
         <dt>
             Tracklist
         </dt>
@@ -69,44 +62,49 @@
         @{
             foreach (var c in Model.elTracklist)
             {
-            <dd>
-                @Html.DisplayFor(p => c.posicion) - 
-                @Html.DisplayFor(p => c.nombreCancion)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(p => c.posicion) -
+                    @Html.DisplayFor(p => c.nombreCancion)
+                </dd>
             }
-        }
-    </dl>
-        @{
+
             if (Model.Album.DiscogsReleaseCode != null && Model.datosDiscogs != null)
             {
-    <dl class="dl-horizontal">
-        <dt>
-            Cubierta
-        </dt>
+                <br />
+                <dt>
+                    Cubierta
+                </dt>
 
-        <dd>
-            <img src="@Html.DisplayFor(model => model.datosDiscogs.coverUrl)" alt="Front Cover">
-        </dd>
+                <dd>
+                    <img src="@Html.DisplayFor(model => model.datosDiscogs.coverUrl)" alt="Front Cover">
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.datosDiscogs.disquera)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.datosDiscogs.disquera)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.datosDiscogs.disquera)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.datosDiscogs.disquera)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.datosDiscogs.numCatalogo)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.datosDiscogs.numCatalogo)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.datosDiscogs.numCatalogo)
-        </dd>
-
-    </dl>
-                }
+                <dd>
+                    @Html.DisplayFor(model => model.datosDiscogs.numCatalogo)
+                </dd>
             }
+        }
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.Album.DiscogsReleaseCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Album.DiscogsReleaseCode)
+        </dd>
+    </dl>
 </div>
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.Album.AlbumID }) |

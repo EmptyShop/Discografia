@@ -22,7 +22,7 @@
     </providers>
   </entityFramework>
   <connectionStrings>
-    <add name="DiscografiaDB" connectionString="data source=(LocalDb)\v11.0;attachdbfilename=C:\Users\carlos\Music.mdf;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="DiscografiaDB" connectionString="data source=(LocalDb)\v11.0;attachdbfilename=MY_PATH\Music.mdf;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
     <add name="DiscografiaModel" connectionString="data source=(localdb)\v11.0;initial catalog=Music;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
     <add name="MusicEntities" connectionString="metadata=res://*/DiscografiaModel.csdl|res://*/DiscografiaModel.ssdl|res://*/DiscografiaModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\v11.0;initial catalog=Music;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
     <add name="DiscografiaModelContainer" connectionString="metadata=res://*/DiscografiaModel.csdl|res://*/DiscografiaModel.ssdl|res://*/DiscografiaModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\v11.0;initial catalog=Music;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
@@ -36,10 +36,10 @@
         <value>discografia.mx/1.0</value>
       </setting>
       <setting name="DiscogsConsumerKey" serializeAs="String">
-        <value>DXOHuxEAoxtmsQEKXkFn</value>
+        <value>MY_CONSUMER_KEY</value>
       </setting>
       <setting name="DiscogsConsumerSecret" serializeAs="String">
-        <value>YjwtZniyLIiCRPCMfVCriLUKdybHnFxX</value>
+        <value>MY_CONSUMER_SECRET</value>
       </setting>
       <setting name="DiscogsGetReleaseUri" serializeAs="String">
         <value>/releases/</value>

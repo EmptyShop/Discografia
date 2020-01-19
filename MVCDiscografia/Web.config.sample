@@ -69,10 +69,10 @@
     </providers>
   </entityFramework>
   <connectionStrings>
-    <add name="DiscografiaModel" connectionString="data source=(LocalDB)\v11.0;attachdbfilename=C:\Users\carlos\Music.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
-    <!--<add name="DiscografiaDB" connectionString="data source=(LocalDB)\v11.0;attachdbfilename=C:\Users\carlos\Music.mdf;integrated security=True;multipleactiveresultsets=True;connect timeout=30;application name=EntityFramework" providerName="System.Data.SqlClient" />-->
+    <add name="DiscografiaModel" connectionString="data source=(LocalDB)\v11.0;attachdbfilename=MY_PATH\Music.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <!--<add name="DiscografiaDB" connectionString="data source=(LocalDB)\v11.0;attachdbfilename=MY_PATH\Music.mdf;integrated security=True;multipleactiveresultsets=True;connect timeout=30;application name=EntityFramework" providerName="System.Data.SqlClient" />-->
     <!--<add name="DiscografiaDB" connectionString="data source=(LocalDb)\v11.0;initial catalog=Music;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />-->
-    <add name="DiscografiaDB" connectionString="data source=(LocalDb)\v11.0;attachdbfilename=C:\Users\carlos\Music.mdf;integrated security=True;MultipleActiveResultSets=True;connect timeout=30;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="DiscografiaDB" connectionString="data source=(LocalDb)\v11.0;attachdbfilename=MY_PATH\Music.mdf;integrated security=True;MultipleActiveResultSets=True;connect timeout=30;App=EntityFramework" providerName="System.Data.SqlClient" />
   </connectionStrings>
   <applicationSettings>
     <MVCDiscografia.Properties.Settings>
@@ -83,10 +83,10 @@
         <value>discografia.mx/1.0</value>
       </setting>
       <setting name="DiscogsConsumerKey" serializeAs="String">
-        <value>DXOHuxEAoxtmsQEKXkFn</value>
+        <value>MY_CONSUMER_KEY</value>
       </setting>
       <setting name="DiscogsConsumerSecret" serializeAs="String">
-        <value>YjwtZniyLIiCRPCMfVCriLUKdybHnFxX</value>
+        <value>MY_CONSUMER_SECRET</value>
       </setting>
       <setting name="DiscogsGetReleaseUri" serializeAs="String">
         <value>/releases/</value>

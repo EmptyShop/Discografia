@@ -12,7 +12,7 @@ namespace MVCDiscografia.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,70 +20,6 @@ namespace MVCDiscografia.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//code.jquery.com/jquery-3.4.1.min.js")]
-        public string jQueryCdn {
-            get {
-                return ((string)(this["jQueryCdn"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js")]
-        public string jQueryValidateCdn {
-            get {
-                return ((string)(this["jQueryValidateCdn"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js")]
-        public string ModernizrCdn {
-            get {
-                return ((string)(this["ModernizrCdn"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")]
-        public string BootstrapJsCdn {
-            get {
-                return ((string)(this["BootstrapJsCdn"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")]
-        public string BootstrapCssCdn {
-            get {
-                return ((string)(this["BootstrapCssCdn"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.vali" +
-            "date.unobtrusive.min.js")]
-        public string ValidateUnobtrusiveCdn {
-            get {
-                return ((string)(this["ValidateUnobtrusiveCdn"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.0/respond.min.js")]
-        public string RespondCdn {
-            get {
-                return ((string)(this["RespondCdn"]));
             }
         }
         
@@ -129,6 +65,71 @@ namespace MVCDiscografia.Properties {
         public string DiscogsGetReleaseUri {
             get {
                 return ((string)(this["DiscogsGetReleaseUri"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("//code.jquery.com/jquery-#version#.min.js")]
+        public string jQueryCdn {
+            get {
+                return ((string)(this["jQueryCdn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/jquery-validate/#version#/jquery.validate.min.js" +
+            "")]
+        public string jQueryValidateCdn {
+            get {
+                return ((string)(this["jQueryValidateCdn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/modernizr/#version#/modernizr.min.js")]
+        public string ModernizrCdn {
+            get {
+                return ((string)(this["ModernizrCdn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("//stackpath.bootstrapcdn.com/bootstrap/#version#/js/bootstrap.min.js")]
+        public string BootstrapJsCdn {
+            get {
+                return ((string)(this["BootstrapJsCdn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("//stackpath.bootstrapcdn.com/bootstrap/#version#/css/bootstrap.min.css")]
+        public string BootstrapCssCdn {
+            get {
+                return ((string)(this["BootstrapCssCdn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/#version#/jquery.v" +
+            "alidate.unobtrusive.min.js")]
+        public string ValidateUnobtrusiveCdn {
+            get {
+                return ((string)(this["ValidateUnobtrusiveCdn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("//cdnjs.cloudflare.com/ajax/libs/respond.js/#version#/respond.min.js")]
+        public string RespondCdn {
+            get {
+                return ((string)(this["RespondCdn"]));
             }
         }
     }

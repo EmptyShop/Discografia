@@ -70,6 +70,8 @@
             this.btnAgregarAlbum = new System.Windows.Forms.Button();
             this.btnModificarAlbum = new System.Windows.Forms.Button();
             this.panelAlbum = new System.Windows.Forms.Panel();
+            this.txtNumCatalogo = new System.Windows.Forms.TextBox();
+            this.txtDisquera = new System.Windows.Forms.TextBox();
             this.lblNumCatalogo = new System.Windows.Forms.Label();
             this.lblDisquera = new System.Windows.Forms.Label();
             this.pctCover = new System.Windows.Forms.PictureBox();
@@ -129,8 +131,6 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lstUsuarios = new System.Windows.Forms.ListBox();
             this.lblUsuarios = new System.Windows.Forms.Label();
-            this.txtDisquera = new System.Windows.Forms.TextBox();
-            this.txtNumCatalogo = new System.Windows.Forms.TextBox();
             this.tabMenu.SuspendLayout();
             this.tabArtista.SuspendLayout();
             this.panelArtistas.SuspendLayout();
@@ -631,6 +631,22 @@
             this.panelAlbum.Size = new System.Drawing.Size(898, 479);
             this.panelAlbum.TabIndex = 2;
             // 
+            // txtNumCatalogo
+            // 
+            this.txtNumCatalogo.Location = new System.Drawing.Point(722, 241);
+            this.txtNumCatalogo.Name = "txtNumCatalogo";
+            this.txtNumCatalogo.ReadOnly = true;
+            this.txtNumCatalogo.Size = new System.Drawing.Size(161, 20);
+            this.txtNumCatalogo.TabIndex = 23;
+            // 
+            // txtDisquera
+            // 
+            this.txtDisquera.Location = new System.Drawing.Point(722, 192);
+            this.txtDisquera.Name = "txtDisquera";
+            this.txtDisquera.ReadOnly = true;
+            this.txtDisquera.Size = new System.Drawing.Size(161, 20);
+            this.txtDisquera.TabIndex = 22;
+            // 
             // lblNumCatalogo
             // 
             this.lblNumCatalogo.AutoSize = true;
@@ -662,7 +678,7 @@
             // txtDiscogsReleaseCode
             // 
             this.txtDiscogsReleaseCode.Location = new System.Drawing.Point(581, 94);
-            this.txtDiscogsReleaseCode.MaxLength = 10;
+            this.txtDiscogsReleaseCode.MaxLength = 12;
             this.txtDiscogsReleaseCode.Name = "txtDiscogsReleaseCode";
             this.txtDiscogsReleaseCode.Size = new System.Drawing.Size(100, 20);
             this.txtDiscogsReleaseCode.TabIndex = 17;
@@ -1241,22 +1257,6 @@
             this.lblUsuarios.Size = new System.Drawing.Size(64, 15);
             this.lblUsuarios.TabIndex = 0;
             this.lblUsuarios.Text = "Usuarios";
-            // 
-            // txtDisquera
-            // 
-            this.txtDisquera.Location = new System.Drawing.Point(722, 192);
-            this.txtDisquera.Name = "txtDisquera";
-            this.txtDisquera.ReadOnly = true;
-            this.txtDisquera.Size = new System.Drawing.Size(161, 20);
-            this.txtDisquera.TabIndex = 22;
-            // 
-            // txtNumCatalogo
-            // 
-            this.txtNumCatalogo.Location = new System.Drawing.Point(722, 241);
-            this.txtNumCatalogo.Name = "txtNumCatalogo";
-            this.txtNumCatalogo.ReadOnly = true;
-            this.txtNumCatalogo.Size = new System.Drawing.Size(161, 20);
-            this.txtNumCatalogo.TabIndex = 23;
             // 
             // MainWindow
             // 
