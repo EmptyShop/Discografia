@@ -30,6 +30,9 @@ namespace MVCDiscografia.Models
 
         [Display(Name = "Código Discogs")]
         public int? DiscogsReleaseCode { get; set; }
+
+        [Display(Name = "Spotify ID")]
+        public string SpotifyID { get; set; }
         
         public Album()
         {

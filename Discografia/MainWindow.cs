@@ -244,6 +244,8 @@ namespace Discografia
             dgvCancionesAlbum.Rows.Clear();
             ActualizaGridAlbumCanciones();
             VaciaCamposAlbumDiscogs();
+            txtSpotifyID.Text = String.Empty;
+            webSpotifyPreview.Navigate("about:blank");
         }
 
         //vacía los campos de información del álbum obtenida de Discogs
@@ -866,9 +868,7 @@ namespace Discografia
         {
             txtAño.Text.Trim();
             string s = txtAño.Text;
-            short r;
-
-            if (s != String.Empty && !Int16.TryParse(s, out r))
+            if (s != String.Empty && !Int16.TryParse(s, out _))
             {
                 MessageBox.Show("El año de la canción no es válido.", "Validación");
                 txtAño.Text = String.Empty;
@@ -880,10 +880,9 @@ namespace Discografia
         {
             txtDuracion.Text.Trim();
             string s = txtDuracion.Text;
-            TimeSpan r;
             Regex regexp = new Regex(@"^(\d{1,2}:)?[0-5]?\d:[0-5]\d$");
 
-            if (s != String.Empty && !(TimeSpan.TryParse(s, out r) && regexp.IsMatch(s)))
+            if (s != String.Empty && !(TimeSpan.TryParse(s, out _) && regexp.IsMatch(s)))
             {
                 MessageBox.Show("el formato de la duración es incorrecto. Utiliza hh:MM:SS", "Validación");
                 txtDuracion.Text = String.Empty;
@@ -1035,6 +1034,7 @@ namespace Discografia
                 lstArtistasAlbum.Items.Clear();
                 dgvCancionesAlbum.Rows.Clear();
                 VaciaCamposAlbumDiscogs();
+                webSpotifyPreview.Navigate("about:blank");
 
                 //obtenemos los datos complementarios del álbum
                 try
@@ -1047,6 +1047,8 @@ namespace Discografia
                         dtpAdquisicion.Value = album.FechaAdquisicion.Value;
                         txtDiscogsReleaseCode.Text = 
                             album.DiscogsReleaseCode != null ? album.DiscogsReleaseCode.Value.ToString() : String.Empty;
+                        txtSpotifyID.Text =
+                            album.SpotifyID != null ? album.SpotifyID : String.Empty;
 
                         //llenado de la lista de artistas del album
                         var artistasAlbum = album.Artistas.OrderBy(s => s.Nombre);
@@ -1075,6 +1077,17 @@ namespace Discografia
                                 txtDisquera.Text = albumDiscogs.disquera;
                                 txtNumCatalogo.Text = albumDiscogs.numCatalogo;
                             }
+                        }
+
+                        //Preview de spotify
+                        if (!String.IsNullOrEmpty(album.SpotifyID))
+                        {
+                            string ruta = Directory.GetCurrentDirectory();
+                            string spotifySrc = File.ReadAllText(ruta + @"\SpotifyPreview.html");
+                            spotifySrc = spotifySrc.Replace("/album/", "/album/" + album.SpotifyID);
+
+                            webSpotifyPreview.NavigateToString(spotifySrc);
+                            
                         }
                     }
                 }
@@ -1214,6 +1227,14 @@ namespace Discografia
             }
         }
 
+        //Eliminamos la parte inicial del URI de Spotify
+        private void txtSpotifyID_Leave(object sender, EventArgs e)
+        {
+            Regex rgx = new Regex(@"spotify:album:");
+            string s = rgx.Replace(txtSpotifyID.Text.Trim(), "", 1);
+            txtSpotifyID.Text = s;
+        }
+
         //asignar un artista al álbum
         private void btnAsignarArtistaAlbum_Click(object sender, EventArgs e)
         {
@@ -1307,6 +1328,8 @@ namespace Discografia
                                     nuevoAlbum.DiscogsReleaseCode = Convert.ToInt32(txtDiscogsReleaseCode.Text);
                                 }
 
+                                nuevoAlbum.SpotifyID = txtSpotifyID.Text.Trim();
+
                                 Artista artistaAlbum;
                                 //Asignación de la lista de artistas
                                 foreach (Artista elemento in lstArtistasAlbum.Items)
@@ -1381,14 +1404,15 @@ namespace Discografia
         //validación de formato de Release code de Discogs (numérico)
         private void txtDiscogsReleaseCode_Leave(object sender, EventArgs e)
         {
-            txtDiscogsReleaseCode.Text.Trim();
-            string s = txtDiscogsReleaseCode.Text;
-            Int32 r;
-
-            if (s != String.Empty && !Int32.TryParse(s, out r))
+            string s = Regex.Replace(txtDiscogsReleaseCode.Text.Trim(), @"^\D+|\D+$", "");
+            if (s != String.Empty && !Int32.TryParse(s, out _))
             {
                 MessageBox.Show("El Release Code no es válido.", "Validación");
                 txtDiscogsReleaseCode.Text = String.Empty;
+            }
+            else
+            {
+                txtDiscogsReleaseCode.Text = s;
             }
         }
 
@@ -1429,6 +1453,7 @@ namespace Discografia
                                     album.FechaGrabacion = dtpGrabacion.Value != DateTime.Today ? dtpGrabacion.Value : (DateTime?)null;
                                     album.FechaAdquisicion = dtpAdquisicion.Value != DateTime.Today ? dtpAdquisicion.Value : (DateTime?)null;
                                     album.DiscogsReleaseCode = txtDiscogsReleaseCode.Text.Trim() != String.Empty ? Convert.ToInt32(txtDiscogsReleaseCode.Text) : (Int32?)null;
+                                    album.SpotifyID = txtSpotifyID.Text.Trim();
 
                                     //obtenemos la lista de artistas a eliminar (los artistas desasignados por el uuario)
                                     var artistasAEliminar = album.Artistas.AsEnumerable()

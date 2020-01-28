@@ -23,6 +23,7 @@ namespace Discografia
         public virtual ICollection<CancionAlbums> Tracklist { get; set; }
 
         public int? DiscogsReleaseCode { get; set; }
+        public string SpotifyID { get; set; }
 
         public Album()
         {

@@ -218,3 +218,8 @@ $("#listaCanciones option").each(function () {
 $("#listaCancionesSeleccionadas option").each(function () {
     $(this).attr("title", $(this).text());
 });
+
+/*elimina "spotify:album:" de la URI de Spotify*/
+$("#SpotifyID").on("blur", function (event) {
+    $(this).val($(this).val().replace(/^spotify:album:/, ""));
+});

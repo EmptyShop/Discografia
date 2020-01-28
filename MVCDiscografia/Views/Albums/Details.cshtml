@@ -95,15 +95,34 @@
                     @Html.DisplayFor(model => model.datosDiscogs.numCatalogo)
                 </dd>
             }
-        }
-        <br />
-        <dt>
-            @Html.DisplayNameFor(model => model.Album.DiscogsReleaseCode)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Album.DiscogsReleaseCode)
-        </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.Album.DiscogsReleaseCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Album.DiscogsReleaseCode)
+            </dd>
+
+            if (Model.Album.SpotifyID != null && Model.Album.SpotifyID.Length > 0)
+            {
+                string SpotifyURL = "https://open.spotify.com/embed/album/" + Model.Album.SpotifyID;
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Album.SpotifyID)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Album.SpotifyID)
+                </dd>
+
+                <dd>
+                    <iframe src="@SpotifyURL" width="300" height="300"
+                            frameborder="0" allowtransparency="true" allow="encrypted-media">
+                    </iframe>
+                </dd>
+                }
+            }
     </dl>
 </div>
 <p>

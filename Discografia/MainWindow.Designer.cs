@@ -60,16 +60,25 @@
             this.lblArtistas = new System.Windows.Forms.Label();
             this.lblDuracion = new System.Windows.Forms.Label();
             this.lblCancion = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblGridCanciones = new System.Windows.Forms.Label();
             this.dgrCancion = new System.Windows.Forms.DataGridView();
             this.CancionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArtistasCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabAlbum = new System.Windows.Forms.TabPage();
+            this.webSpotifyPreview = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.lblSpacer = new System.Windows.Forms.Label();
-            this.btnAgregarAlbum = new System.Windows.Forms.Button();
+            this.btnEliminarAlbum = new System.Windows.Forms.Button();
             this.btnModificarAlbum = new System.Windows.Forms.Button();
+            this.btnAgregarAlbum = new System.Windows.Forms.Button();
             this.panelAlbum = new System.Windows.Forms.Panel();
+            this.dgvCancionesAlbum = new System.Windows.Forms.DataGridView();
+            this.CancionID_AlbumCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPosicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArtistas_AlbumCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCancion_AlbumCanciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSpotifyID = new System.Windows.Forms.TextBox();
+            this.lblSpotifyID = new System.Windows.Forms.Label();
             this.txtNumCatalogo = new System.Windows.Forms.TextBox();
             this.txtDisquera = new System.Windows.Forms.TextBox();
             this.lblNumCatalogo = new System.Windows.Forms.Label();
@@ -77,11 +86,6 @@
             this.pctCover = new System.Windows.Forms.PictureBox();
             this.txtDiscogsReleaseCode = new System.Windows.Forms.TextBox();
             this.lblDiscogsReleaseCode = new System.Windows.Forms.Label();
-            this.dgvCancionesAlbum = new System.Windows.Forms.DataGridView();
-            this.CancionID_AlbumCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPosicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colArtistas_AlbumCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCancion_AlbumCanciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCanciones = new System.Windows.Forms.DataGridView();
             this.CancionID_Canciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArtistas = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,14 +110,13 @@
             this.lblFormato = new System.Windows.Forms.Label();
             this.lblAlbum = new System.Windows.Forms.Label();
             this.lblAlbums = new System.Windows.Forms.Label();
-            this.btnEliminarAlbum = new System.Windows.Forms.Button();
             this.dgrAlbum = new System.Windows.Forms.DataGridView();
             this.AlbumID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArtistasAlbum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAlbum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabFormatos = new System.Windows.Forms.TabPage();
             this.lstFormatos = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblDescripcionFormato = new System.Windows.Forms.Label();
             this.btnEliminarFormato = new System.Windows.Forms.Button();
             this.btnModificarFormato = new System.Windows.Forms.Button();
             this.btnAgregarFormato = new System.Windows.Forms.Button();
@@ -138,9 +141,10 @@
             this.panelCancion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrCancion)).BeginInit();
             this.tabAlbum.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webSpotifyPreview)).BeginInit();
             this.panelAlbum.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCancionesAlbum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctCover)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCanciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrAlbum)).BeginInit();
             this.tabFormatos.SuspendLayout();
@@ -159,7 +163,7 @@
             this.tabMenu.Location = new System.Drawing.Point(6, 2);
             this.tabMenu.Name = "tabMenu";
             this.tabMenu.SelectedIndex = 0;
-            this.tabMenu.Size = new System.Drawing.Size(959, 664);
+            this.tabMenu.Size = new System.Drawing.Size(1070, 685);
             this.tabMenu.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabMenu.TabIndex = 0;
             // 
@@ -175,7 +179,7 @@
             this.tabArtista.Location = new System.Drawing.Point(4, 27);
             this.tabArtista.Name = "tabArtista";
             this.tabArtista.Padding = new System.Windows.Forms.Padding(3);
-            this.tabArtista.Size = new System.Drawing.Size(951, 633);
+            this.tabArtista.Size = new System.Drawing.Size(1062, 654);
             this.tabArtista.TabIndex = 0;
             this.tabArtista.Text = "Artista";
             this.tabArtista.UseVisualStyleBackColor = true;
@@ -288,13 +292,13 @@
             this.tabCancion.Controls.Add(this.btnModificarCancion);
             this.tabCancion.Controls.Add(this.btnAgregarCancion);
             this.tabCancion.Controls.Add(this.panelCancion);
-            this.tabCancion.Controls.Add(this.label1);
+            this.tabCancion.Controls.Add(this.lblGridCanciones);
             this.tabCancion.Controls.Add(this.dgrCancion);
             this.tabCancion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabCancion.Location = new System.Drawing.Point(4, 27);
             this.tabCancion.Name = "tabCancion";
             this.tabCancion.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCancion.Size = new System.Drawing.Size(951, 633);
+            this.tabCancion.Size = new System.Drawing.Size(1062, 654);
             this.tabCancion.TabIndex = 1;
             this.tabCancion.Text = "Canción";
             this.tabCancion.UseVisualStyleBackColor = true;
@@ -495,15 +499,15 @@
             this.lblCancion.TabIndex = 3;
             this.lblCancion.Text = "Nombre";
             // 
-            // label1
+            // lblGridCanciones
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Canciones";
+            this.lblGridCanciones.AutoSize = true;
+            this.lblGridCanciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGridCanciones.Location = new System.Drawing.Point(17, 20);
+            this.lblGridCanciones.Name = "lblGridCanciones";
+            this.lblGridCanciones.Size = new System.Drawing.Size(74, 15);
+            this.lblGridCanciones.TabIndex = 0;
+            this.lblGridCanciones.Text = "Canciones";
             // 
             // dgrCancion
             // 
@@ -553,52 +557,75 @@
             // tabAlbum
             // 
             this.tabAlbum.AutoScroll = true;
+            this.tabAlbum.Controls.Add(this.webSpotifyPreview);
             this.tabAlbum.Controls.Add(this.lblSpacer);
-            this.tabAlbum.Controls.Add(this.btnAgregarAlbum);
+            this.tabAlbum.Controls.Add(this.btnEliminarAlbum);
             this.tabAlbum.Controls.Add(this.btnModificarAlbum);
+            this.tabAlbum.Controls.Add(this.btnAgregarAlbum);
             this.tabAlbum.Controls.Add(this.panelAlbum);
             this.tabAlbum.Controls.Add(this.lblAlbums);
-            this.tabAlbum.Controls.Add(this.btnEliminarAlbum);
             this.tabAlbum.Controls.Add(this.dgrAlbum);
             this.tabAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabAlbum.Location = new System.Drawing.Point(4, 27);
+            this.tabAlbum.Margin = new System.Windows.Forms.Padding(0);
             this.tabAlbum.Name = "tabAlbum";
-            this.tabAlbum.Size = new System.Drawing.Size(951, 633);
+            this.tabAlbum.Size = new System.Drawing.Size(1062, 654);
             this.tabAlbum.TabIndex = 2;
             this.tabAlbum.Text = "Album";
             this.tabAlbum.UseVisualStyleBackColor = true;
             // 
+            // webSpotifyPreview
+            // 
+            this.webSpotifyPreview.Location = new System.Drawing.Point(740, 36);
+            this.webSpotifyPreview.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webSpotifyPreview.Name = "webSpotifyPreview";
+            this.webSpotifyPreview.Size = new System.Drawing.Size(290, 253);
+            this.webSpotifyPreview.TabIndex = 30;
+            // 
             // lblSpacer
             // 
             this.lblSpacer.AutoSize = true;
-            this.lblSpacer.Location = new System.Drawing.Point(3, 755);
+            this.lblSpacer.Location = new System.Drawing.Point(266, 810);
             this.lblSpacer.Name = "lblSpacer";
             this.lblSpacer.Size = new System.Drawing.Size(10, 15);
             this.lblSpacer.TabIndex = 6;
             this.lblSpacer.Text = " ";
             // 
-            // btnAgregarAlbum
+            // btnEliminarAlbum
             // 
-            this.btnAgregarAlbum.Location = new System.Drawing.Point(215, 727);
-            this.btnAgregarAlbum.Name = "btnAgregarAlbum";
-            this.btnAgregarAlbum.Size = new System.Drawing.Size(130, 28);
-            this.btnAgregarAlbum.TabIndex = 3;
-            this.btnAgregarAlbum.Text = "Agregar";
-            this.btnAgregarAlbum.UseVisualStyleBackColor = true;
-            this.btnAgregarAlbum.Click += new System.EventHandler(this.btnAgregarAlbum_Click);
+            this.btnEliminarAlbum.Location = new System.Drawing.Point(638, 789);
+            this.btnEliminarAlbum.Name = "btnEliminarAlbum";
+            this.btnEliminarAlbum.Size = new System.Drawing.Size(130, 28);
+            this.btnEliminarAlbum.TabIndex = 29;
+            this.btnEliminarAlbum.Text = "Eliminar";
+            this.btnEliminarAlbum.UseVisualStyleBackColor = true;
+            this.btnEliminarAlbum.Click += new System.EventHandler(this.btnEliminarAlbum_Click);
             // 
             // btnModificarAlbum
             // 
-            this.btnModificarAlbum.Location = new System.Drawing.Point(395, 727);
+            this.btnModificarAlbum.Location = new System.Drawing.Point(458, 789);
             this.btnModificarAlbum.Name = "btnModificarAlbum";
             this.btnModificarAlbum.Size = new System.Drawing.Size(130, 28);
-            this.btnModificarAlbum.TabIndex = 4;
+            this.btnModificarAlbum.TabIndex = 28;
             this.btnModificarAlbum.Text = "Modificar";
             this.btnModificarAlbum.UseVisualStyleBackColor = true;
             this.btnModificarAlbum.Click += new System.EventHandler(this.btnModificarAlbum_Click);
             // 
+            // btnAgregarAlbum
+            // 
+            this.btnAgregarAlbum.Location = new System.Drawing.Point(278, 789);
+            this.btnAgregarAlbum.Name = "btnAgregarAlbum";
+            this.btnAgregarAlbum.Size = new System.Drawing.Size(130, 28);
+            this.btnAgregarAlbum.TabIndex = 27;
+            this.btnAgregarAlbum.Text = "Agregar";
+            this.btnAgregarAlbum.UseVisualStyleBackColor = true;
+            this.btnAgregarAlbum.Click += new System.EventHandler(this.btnAgregarAlbum_Click);
+            // 
             // panelAlbum
             // 
+            this.panelAlbum.Controls.Add(this.dgvCancionesAlbum);
+            this.panelAlbum.Controls.Add(this.txtSpotifyID);
+            this.panelAlbum.Controls.Add(this.lblSpotifyID);
             this.panelAlbum.Controls.Add(this.txtNumCatalogo);
             this.panelAlbum.Controls.Add(this.txtDisquera);
             this.panelAlbum.Controls.Add(this.lblNumCatalogo);
@@ -606,7 +633,6 @@
             this.panelAlbum.Controls.Add(this.pctCover);
             this.panelAlbum.Controls.Add(this.txtDiscogsReleaseCode);
             this.panelAlbum.Controls.Add(this.lblDiscogsReleaseCode);
-            this.panelAlbum.Controls.Add(this.dgvCancionesAlbum);
             this.panelAlbum.Controls.Add(this.dgvCanciones);
             this.panelAlbum.Controls.Add(this.btnAsignarArtistaAlbum);
             this.panelAlbum.Controls.Add(this.btnDesasignarArtistaAlbum);
@@ -626,72 +652,10 @@
             this.panelAlbum.Controls.Add(this.lblFGrabacion);
             this.panelAlbum.Controls.Add(this.lblFormato);
             this.panelAlbum.Controls.Add(this.lblAlbum);
-            this.panelAlbum.Location = new System.Drawing.Point(18, 234);
+            this.panelAlbum.Location = new System.Drawing.Point(18, 300);
             this.panelAlbum.Name = "panelAlbum";
-            this.panelAlbum.Size = new System.Drawing.Size(898, 479);
+            this.panelAlbum.Size = new System.Drawing.Size(1013, 479);
             this.panelAlbum.TabIndex = 2;
-            // 
-            // txtNumCatalogo
-            // 
-            this.txtNumCatalogo.Location = new System.Drawing.Point(722, 241);
-            this.txtNumCatalogo.Name = "txtNumCatalogo";
-            this.txtNumCatalogo.ReadOnly = true;
-            this.txtNumCatalogo.Size = new System.Drawing.Size(161, 20);
-            this.txtNumCatalogo.TabIndex = 23;
-            // 
-            // txtDisquera
-            // 
-            this.txtDisquera.Location = new System.Drawing.Point(722, 192);
-            this.txtDisquera.Name = "txtDisquera";
-            this.txtDisquera.ReadOnly = true;
-            this.txtDisquera.Size = new System.Drawing.Size(161, 20);
-            this.txtDisquera.TabIndex = 22;
-            // 
-            // lblNumCatalogo
-            // 
-            this.lblNumCatalogo.AutoSize = true;
-            this.lblNumCatalogo.Location = new System.Drawing.Point(719, 223);
-            this.lblNumCatalogo.Name = "lblNumCatalogo";
-            this.lblNumCatalogo.Size = new System.Drawing.Size(86, 15);
-            this.lblNumCatalogo.TabIndex = 21;
-            this.lblNumCatalogo.Text = "Núm Catálogo";
-            // 
-            // lblDisquera
-            // 
-            this.lblDisquera.AutoSize = true;
-            this.lblDisquera.Location = new System.Drawing.Point(719, 174);
-            this.lblDisquera.Name = "lblDisquera";
-            this.lblDisquera.Size = new System.Drawing.Size(57, 15);
-            this.lblDisquera.TabIndex = 19;
-            this.lblDisquera.Text = "Disquera";
-            // 
-            // pctCover
-            // 
-            this.pctCover.Location = new System.Drawing.Point(725, 12);
-            this.pctCover.Name = "pctCover";
-            this.pctCover.Size = new System.Drawing.Size(150, 150);
-            this.pctCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pctCover.TabIndex = 18;
-            this.pctCover.TabStop = false;
-            this.pctCover.WaitOnLoad = true;
-            // 
-            // txtDiscogsReleaseCode
-            // 
-            this.txtDiscogsReleaseCode.Location = new System.Drawing.Point(581, 94);
-            this.txtDiscogsReleaseCode.MaxLength = 12;
-            this.txtDiscogsReleaseCode.Name = "txtDiscogsReleaseCode";
-            this.txtDiscogsReleaseCode.Size = new System.Drawing.Size(100, 20);
-            this.txtDiscogsReleaseCode.TabIndex = 17;
-            this.txtDiscogsReleaseCode.Leave += new System.EventHandler(this.txtDiscogsReleaseCode_Leave);
-            // 
-            // lblDiscogsReleaseCode
-            // 
-            this.lblDiscogsReleaseCode.AutoSize = true;
-            this.lblDiscogsReleaseCode.Location = new System.Drawing.Point(442, 94);
-            this.lblDiscogsReleaseCode.Name = "lblDiscogsReleaseCode";
-            this.lblDiscogsReleaseCode.Size = new System.Drawing.Size(132, 15);
-            this.lblDiscogsReleaseCode.TabIndex = 16;
-            this.lblDiscogsReleaseCode.Text = "Discogs Release Code";
             // 
             // dgvCancionesAlbum
             // 
@@ -706,14 +670,14 @@
             this.colPosicion,
             this.colArtistas_AlbumCancion,
             this.colCancion_AlbumCanciones});
-            this.dgvCancionesAlbum.Location = new System.Drawing.Point(478, 315);
+            this.dgvCancionesAlbum.Location = new System.Drawing.Point(534, 315);
             this.dgvCancionesAlbum.MultiSelect = false;
             this.dgvCancionesAlbum.Name = "dgvCancionesAlbum";
             this.dgvCancionesAlbum.ReadOnly = true;
             this.dgvCancionesAlbum.RowHeadersVisible = false;
             this.dgvCancionesAlbum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCancionesAlbum.Size = new System.Drawing.Size(408, 149);
-            this.dgvCancionesAlbum.TabIndex = 15;
+            this.dgvCancionesAlbum.Size = new System.Drawing.Size(463, 149);
+            this.dgvCancionesAlbum.TabIndex = 26;
             this.dgvCancionesAlbum.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvCancionesAlbum_DragDrop);
             this.dgvCancionesAlbum.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvCancionesAlbum_DragEnter);
             this.dgvCancionesAlbum.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvCancionesAlbum_DragOver);
@@ -740,14 +704,94 @@
             this.colArtistas_AlbumCancion.HeaderText = "Artistas";
             this.colArtistas_AlbumCancion.Name = "colArtistas_AlbumCancion";
             this.colArtistas_AlbumCancion.ReadOnly = true;
-            this.colArtistas_AlbumCancion.Width = 110;
+            this.colArtistas_AlbumCancion.Width = 130;
             // 
             // colCancion_AlbumCanciones
             // 
             this.colCancion_AlbumCanciones.HeaderText = "Canción";
             this.colCancion_AlbumCanciones.Name = "colCancion_AlbumCanciones";
             this.colCancion_AlbumCanciones.ReadOnly = true;
-            this.colCancion_AlbumCanciones.Width = 250;
+            this.colCancion_AlbumCanciones.Width = 288;
+            // 
+            // txtSpotifyID
+            // 
+            this.txtSpotifyID.Location = new System.Drawing.Point(484, 91);
+            this.txtSpotifyID.MaxLength = 64;
+            this.txtSpotifyID.Name = "txtSpotifyID";
+            this.txtSpotifyID.Size = new System.Drawing.Size(203, 20);
+            this.txtSpotifyID.TabIndex = 14;
+            this.txtSpotifyID.Leave += new System.EventHandler(this.txtSpotifyID_Leave);
+            // 
+            // lblSpotifyID
+            // 
+            this.lblSpotifyID.AutoSize = true;
+            this.lblSpotifyID.Location = new System.Drawing.Point(420, 94);
+            this.lblSpotifyID.Name = "lblSpotifyID";
+            this.lblSpotifyID.Size = new System.Drawing.Size(58, 15);
+            this.lblSpotifyID.TabIndex = 13;
+            this.lblSpotifyID.Text = "Spotify ID";
+            // 
+            // txtNumCatalogo
+            // 
+            this.txtNumCatalogo.Location = new System.Drawing.Point(722, 241);
+            this.txtNumCatalogo.Name = "txtNumCatalogo";
+            this.txtNumCatalogo.ReadOnly = true;
+            this.txtNumCatalogo.Size = new System.Drawing.Size(161, 20);
+            this.txtNumCatalogo.TabIndex = 33;
+            // 
+            // txtDisquera
+            // 
+            this.txtDisquera.Location = new System.Drawing.Point(722, 192);
+            this.txtDisquera.Name = "txtDisquera";
+            this.txtDisquera.ReadOnly = true;
+            this.txtDisquera.Size = new System.Drawing.Size(161, 20);
+            this.txtDisquera.TabIndex = 31;
+            // 
+            // lblNumCatalogo
+            // 
+            this.lblNumCatalogo.AutoSize = true;
+            this.lblNumCatalogo.Location = new System.Drawing.Point(719, 223);
+            this.lblNumCatalogo.Name = "lblNumCatalogo";
+            this.lblNumCatalogo.Size = new System.Drawing.Size(86, 15);
+            this.lblNumCatalogo.TabIndex = 32;
+            this.lblNumCatalogo.Text = "Núm Catálogo";
+            // 
+            // lblDisquera
+            // 
+            this.lblDisquera.AutoSize = true;
+            this.lblDisquera.Location = new System.Drawing.Point(719, 174);
+            this.lblDisquera.Name = "lblDisquera";
+            this.lblDisquera.Size = new System.Drawing.Size(57, 15);
+            this.lblDisquera.TabIndex = 30;
+            this.lblDisquera.Text = "Disquera";
+            // 
+            // pctCover
+            // 
+            this.pctCover.Location = new System.Drawing.Point(725, 12);
+            this.pctCover.Name = "pctCover";
+            this.pctCover.Size = new System.Drawing.Size(150, 150);
+            this.pctCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctCover.TabIndex = 18;
+            this.pctCover.TabStop = false;
+            this.pctCover.WaitOnLoad = true;
+            // 
+            // txtDiscogsReleaseCode
+            // 
+            this.txtDiscogsReleaseCode.Location = new System.Drawing.Point(556, 62);
+            this.txtDiscogsReleaseCode.MaxLength = 12;
+            this.txtDiscogsReleaseCode.Name = "txtDiscogsReleaseCode";
+            this.txtDiscogsReleaseCode.Size = new System.Drawing.Size(131, 20);
+            this.txtDiscogsReleaseCode.TabIndex = 12;
+            this.txtDiscogsReleaseCode.Leave += new System.EventHandler(this.txtDiscogsReleaseCode_Leave);
+            // 
+            // lblDiscogsReleaseCode
+            // 
+            this.lblDiscogsReleaseCode.AutoSize = true;
+            this.lblDiscogsReleaseCode.Location = new System.Drawing.Point(417, 62);
+            this.lblDiscogsReleaseCode.Name = "lblDiscogsReleaseCode";
+            this.lblDiscogsReleaseCode.Size = new System.Drawing.Size(132, 15);
+            this.lblDiscogsReleaseCode.TabIndex = 11;
+            this.lblDiscogsReleaseCode.Text = "Discogs Release Code";
             // 
             // dgvCanciones
             // 
@@ -767,8 +811,8 @@
             this.dgvCanciones.ReadOnly = true;
             this.dgvCanciones.RowHeadersVisible = false;
             this.dgvCanciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCanciones.Size = new System.Drawing.Size(408, 149);
-            this.dgvCanciones.TabIndex = 14;
+            this.dgvCanciones.Size = new System.Drawing.Size(465, 149);
+            this.dgvCanciones.TabIndex = 22;
             this.dgvCanciones.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvCanciones_MouseUp);
             // 
             // CancionID_Canciones
@@ -783,14 +827,14 @@
             this.colArtistas.HeaderText = "Artistas";
             this.colArtistas.Name = "colArtistas";
             this.colArtistas.ReadOnly = true;
-            this.colArtistas.Width = 110;
+            this.colArtistas.Width = 130;
             // 
             // colCancion_Canciones
             // 
             this.colCancion_Canciones.HeaderText = "Canción";
             this.colCancion_Canciones.Name = "colCancion_Canciones";
             this.colCancion_Canciones.ReadOnly = true;
-            this.colCancion_Canciones.Width = 275;
+            this.colCancion_Canciones.Width = 315;
             // 
             // colOrdenCanciones
             // 
@@ -801,40 +845,40 @@
             // 
             // btnAsignarArtistaAlbum
             // 
-            this.btnAsignarArtistaAlbum.Location = new System.Drawing.Point(337, 181);
+            this.btnAsignarArtistaAlbum.Location = new System.Drawing.Point(337, 196);
             this.btnAsignarArtistaAlbum.Name = "btnAsignarArtistaAlbum";
             this.btnAsignarArtistaAlbum.Size = new System.Drawing.Size(25, 21);
-            this.btnAsignarArtistaAlbum.TabIndex = 3;
+            this.btnAsignarArtistaAlbum.TabIndex = 17;
             this.btnAsignarArtistaAlbum.Text = ">";
             this.btnAsignarArtistaAlbum.UseVisualStyleBackColor = true;
             this.btnAsignarArtistaAlbum.Click += new System.EventHandler(this.btnAsignarArtistaAlbum_Click);
             // 
             // btnDesasignarArtistaAlbum
             // 
-            this.btnDesasignarArtistaAlbum.Location = new System.Drawing.Point(337, 199);
+            this.btnDesasignarArtistaAlbum.Location = new System.Drawing.Point(337, 214);
             this.btnDesasignarArtistaAlbum.Name = "btnDesasignarArtistaAlbum";
             this.btnDesasignarArtistaAlbum.Size = new System.Drawing.Size(25, 21);
-            this.btnDesasignarArtistaAlbum.TabIndex = 4;
+            this.btnDesasignarArtistaAlbum.TabIndex = 18;
             this.btnDesasignarArtistaAlbum.Text = "<";
             this.btnDesasignarArtistaAlbum.UseVisualStyleBackColor = true;
             this.btnDesasignarArtistaAlbum.Click += new System.EventHandler(this.btnDesasignarArtistaAlbum_Click);
             // 
             // btnAsignarCancion
             // 
-            this.btnAsignarCancion.Location = new System.Drawing.Point(436, 358);
+            this.btnAsignarCancion.Location = new System.Drawing.Point(493, 360);
             this.btnAsignarCancion.Name = "btnAsignarCancion";
             this.btnAsignarCancion.Size = new System.Drawing.Size(25, 21);
-            this.btnAsignarCancion.TabIndex = 5;
+            this.btnAsignarCancion.TabIndex = 23;
             this.btnAsignarCancion.Text = ">";
             this.btnAsignarCancion.UseVisualStyleBackColor = true;
             this.btnAsignarCancion.Click += new System.EventHandler(this.btnAsignarCancion_Click);
             // 
             // btnDesasignarCancion
             // 
-            this.btnDesasignarCancion.Location = new System.Drawing.Point(436, 376);
+            this.btnDesasignarCancion.Location = new System.Drawing.Point(493, 378);
             this.btnDesasignarCancion.Name = "btnDesasignarCancion";
             this.btnDesasignarCancion.Size = new System.Drawing.Size(25, 21);
-            this.btnDesasignarCancion.TabIndex = 6;
+            this.btnDesasignarCancion.TabIndex = 24;
             this.btnDesasignarCancion.Text = "<";
             this.btnDesasignarCancion.UseVisualStyleBackColor = true;
             this.btnDesasignarCancion.Click += new System.EventHandler(this.btnDesasignarCancion_Click);
@@ -842,10 +886,10 @@
             // lblCancionesAlbum
             // 
             this.lblCancionesAlbum.AutoSize = true;
-            this.lblCancionesAlbum.Location = new System.Drawing.Point(475, 297);
+            this.lblCancionesAlbum.Location = new System.Drawing.Point(531, 297);
             this.lblCancionesAlbum.Name = "lblCancionesAlbum";
             this.lblCancionesAlbum.Size = new System.Drawing.Size(52, 15);
-            this.lblCancionesAlbum.TabIndex = 11;
+            this.lblCancionesAlbum.TabIndex = 25;
             this.lblCancionesAlbum.Text = "Tracklist";
             // 
             // lblCanciones
@@ -854,7 +898,7 @@
             this.lblCanciones.Location = new System.Drawing.Point(10, 297);
             this.lblCanciones.Name = "lblCanciones";
             this.lblCanciones.Size = new System.Drawing.Size(65, 15);
-            this.lblCanciones.TabIndex = 10;
+            this.lblCanciones.TabIndex = 21;
             this.lblCanciones.Text = "Canciones";
             // 
             // lstArtistas2
@@ -863,11 +907,11 @@
             this.lstArtistas2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstArtistas2.FormattingEnabled = true;
             this.lstArtistas2.ItemHeight = 15;
-            this.lstArtistas2.Location = new System.Drawing.Point(13, 139);
+            this.lstArtistas2.Location = new System.Drawing.Point(13, 154);
             this.lstArtistas2.Name = "lstArtistas2";
             this.lstArtistas2.Size = new System.Drawing.Size(311, 124);
             this.lstArtistas2.Sorted = true;
-            this.lstArtistas2.TabIndex = 3;
+            this.lstArtistas2.TabIndex = 16;
             this.lstArtistas2.ValueMember = "ArtistaID";
             // 
             // lstArtistasAlbum
@@ -876,29 +920,29 @@
             this.lstArtistasAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstArtistasAlbum.FormattingEnabled = true;
             this.lstArtistasAlbum.ItemHeight = 15;
-            this.lstArtistasAlbum.Location = new System.Drawing.Point(376, 139);
+            this.lstArtistasAlbum.Location = new System.Drawing.Point(376, 154);
             this.lstArtistasAlbum.Name = "lstArtistasAlbum";
             this.lstArtistasAlbum.Size = new System.Drawing.Size(311, 124);
             this.lstArtistasAlbum.Sorted = true;
-            this.lstArtistasAlbum.TabIndex = 4;
+            this.lstArtistasAlbum.TabIndex = 20;
             this.lstArtistasAlbum.ValueMember = "ArtistaID";
             // 
             // lblArtistasAlbum
             // 
             this.lblArtistasAlbum.AutoSize = true;
-            this.lblArtistasAlbum.Location = new System.Drawing.Point(374, 121);
+            this.lblArtistasAlbum.Location = new System.Drawing.Point(374, 136);
             this.lblArtistasAlbum.Name = "lblArtistasAlbum";
             this.lblArtistasAlbum.Size = new System.Drawing.Size(104, 15);
-            this.lblArtistasAlbum.TabIndex = 9;
+            this.lblArtistasAlbum.TabIndex = 19;
             this.lblArtistasAlbum.Text = "Artistas del Album";
             // 
             // lblArtistas2
             // 
             this.lblArtistas2.AutoSize = true;
-            this.lblArtistas2.Location = new System.Drawing.Point(10, 121);
+            this.lblArtistas2.Location = new System.Drawing.Point(10, 136);
             this.lblArtistas2.Name = "lblArtistas2";
             this.lblArtistas2.Size = new System.Drawing.Size(46, 15);
-            this.lblArtistas2.TabIndex = 8;
+            this.lblArtistas2.TabIndex = 15;
             this.lblArtistas2.Text = "Artistas";
             // 
             // dtpAdquisicion
@@ -909,7 +953,7 @@
             this.dtpAdquisicion.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpAdquisicion.Name = "dtpAdquisicion";
             this.dtpAdquisicion.Size = new System.Drawing.Size(95, 20);
-            this.dtpAdquisicion.TabIndex = 7;
+            this.dtpAdquisicion.TabIndex = 10;
             // 
             // dtpGrabacion
             // 
@@ -919,7 +963,7 @@
             this.dtpGrabacion.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpGrabacion.Name = "dtpGrabacion";
             this.dtpGrabacion.Size = new System.Drawing.Size(95, 20);
-            this.dtpGrabacion.TabIndex = 6;
+            this.dtpGrabacion.TabIndex = 8;
             // 
             // cboFormato
             // 
@@ -930,7 +974,7 @@
             this.cboFormato.Location = new System.Drawing.Point(69, 38);
             this.cboFormato.Name = "cboFormato";
             this.cboFormato.Size = new System.Drawing.Size(145, 23);
-            this.cboFormato.TabIndex = 5;
+            this.cboFormato.TabIndex = 6;
             this.cboFormato.ValueMember = "FormatoID";
             // 
             // txtAlbum
@@ -948,7 +992,7 @@
             this.lblFAdquisicion.Location = new System.Drawing.Point(160, 70);
             this.lblFAdquisicion.Name = "lblFAdquisicion";
             this.lblFAdquisicion.Size = new System.Drawing.Size(124, 15);
-            this.lblFAdquisicion.TabIndex = 3;
+            this.lblFAdquisicion.TabIndex = 9;
             this.lblFAdquisicion.Text = "Fecha de Adquisición";
             // 
             // lblFGrabacion
@@ -957,7 +1001,7 @@
             this.lblFGrabacion.Location = new System.Drawing.Point(10, 70);
             this.lblFGrabacion.Name = "lblFGrabacion";
             this.lblFGrabacion.Size = new System.Drawing.Size(118, 15);
-            this.lblFGrabacion.TabIndex = 2;
+            this.lblFGrabacion.TabIndex = 7;
             this.lblFGrabacion.Text = "Fecha de Grabación";
             // 
             // lblFormato
@@ -966,7 +1010,7 @@
             this.lblFormato.Location = new System.Drawing.Point(10, 44);
             this.lblFormato.Name = "lblFormato";
             this.lblFormato.Size = new System.Drawing.Size(53, 15);
-            this.lblFormato.TabIndex = 1;
+            this.lblFormato.TabIndex = 5;
             this.lblFormato.Text = "Formato";
             // 
             // lblAlbum
@@ -975,7 +1019,7 @@
             this.lblAlbum.Location = new System.Drawing.Point(10, 17);
             this.lblAlbum.Name = "lblAlbum";
             this.lblAlbum.Size = new System.Drawing.Size(52, 15);
-            this.lblAlbum.TabIndex = 0;
+            this.lblAlbum.TabIndex = 3;
             this.lblAlbum.Text = "Nombre";
             // 
             // lblAlbums
@@ -985,18 +1029,8 @@
             this.lblAlbums.Location = new System.Drawing.Point(22, 16);
             this.lblAlbums.Name = "lblAlbums";
             this.lblAlbums.Size = new System.Drawing.Size(54, 15);
-            this.lblAlbums.TabIndex = 1;
+            this.lblAlbums.TabIndex = 0;
             this.lblAlbums.Text = "Albums";
-            // 
-            // btnEliminarAlbum
-            // 
-            this.btnEliminarAlbum.Location = new System.Drawing.Point(575, 727);
-            this.btnEliminarAlbum.Name = "btnEliminarAlbum";
-            this.btnEliminarAlbum.Size = new System.Drawing.Size(130, 28);
-            this.btnEliminarAlbum.TabIndex = 5;
-            this.btnEliminarAlbum.Text = "Eliminar";
-            this.btnEliminarAlbum.UseVisualStyleBackColor = true;
-            this.btnEliminarAlbum.Click += new System.EventHandler(this.btnEliminarAlbum_Click);
             // 
             // dgrAlbum
             // 
@@ -1012,8 +1046,8 @@
             this.dgrAlbum.Name = "dgrAlbum";
             this.dgrAlbum.ReadOnly = true;
             this.dgrAlbum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgrAlbum.Size = new System.Drawing.Size(713, 179);
-            this.dgrAlbum.TabIndex = 0;
+            this.dgrAlbum.Size = new System.Drawing.Size(700, 250);
+            this.dgrAlbum.TabIndex = 1;
             this.dgrAlbum.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgrAlbum_DataBindingComplete);
             this.dgrAlbum.SelectionChanged += new System.EventHandler(this.dgrAlbum_SelectionChanged);
             this.dgrAlbum.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgrAlbum_MouseUp);
@@ -1040,12 +1074,12 @@
             this.colAlbum.HeaderText = "Album";
             this.colAlbum.Name = "colAlbum";
             this.colAlbum.ReadOnly = true;
-            this.colAlbum.Width = 400;
+            this.colAlbum.Width = 390;
             // 
             // tabFormatos
             // 
             this.tabFormatos.Controls.Add(this.lstFormatos);
-            this.tabFormatos.Controls.Add(this.label3);
+            this.tabFormatos.Controls.Add(this.lblDescripcionFormato);
             this.tabFormatos.Controls.Add(this.btnEliminarFormato);
             this.tabFormatos.Controls.Add(this.btnModificarFormato);
             this.tabFormatos.Controls.Add(this.btnAgregarFormato);
@@ -1054,7 +1088,7 @@
             this.tabFormatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabFormatos.Location = new System.Drawing.Point(4, 27);
             this.tabFormatos.Name = "tabFormatos";
-            this.tabFormatos.Size = new System.Drawing.Size(951, 633);
+            this.tabFormatos.Size = new System.Drawing.Size(1062, 654);
             this.tabFormatos.TabIndex = 3;
             this.tabFormatos.Text = "Formatos";
             this.tabFormatos.UseVisualStyleBackColor = true;
@@ -1073,14 +1107,14 @@
             this.lstFormatos.ValueMember = "FormatoID";
             this.lstFormatos.SelectedIndexChanged += new System.EventHandler(this.lstFormatos_SelectedIndexChanged);
             // 
-            // label3
+            // lblDescripcionFormato
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 159);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Descripción";
+            this.lblDescripcionFormato.AutoSize = true;
+            this.lblDescripcionFormato.Location = new System.Drawing.Point(13, 159);
+            this.lblDescripcionFormato.Name = "lblDescripcionFormato";
+            this.lblDescripcionFormato.Size = new System.Drawing.Size(72, 15);
+            this.lblDescripcionFormato.TabIndex = 5;
+            this.lblDescripcionFormato.Text = "Descripción";
             // 
             // btnEliminarFormato
             // 
@@ -1143,7 +1177,7 @@
             this.tabUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabUsuarios.Location = new System.Drawing.Point(4, 27);
             this.tabUsuarios.Name = "tabUsuarios";
-            this.tabUsuarios.Size = new System.Drawing.Size(951, 633);
+            this.tabUsuarios.Size = new System.Drawing.Size(1062, 654);
             this.tabUsuarios.TabIndex = 4;
             this.tabUsuarios.Text = "Usuarios";
             this.tabUsuarios.UseVisualStyleBackColor = true;
@@ -1262,10 +1296,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(965, 661);
+            this.ClientSize = new System.Drawing.Size(1079, 691);
             this.Controls.Add(this.tabMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(5, 5);
+            this.Location = new System.Drawing.Point(5, 1);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Discografía";
@@ -1282,10 +1316,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrCancion)).EndInit();
             this.tabAlbum.ResumeLayout(false);
             this.tabAlbum.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webSpotifyPreview)).EndInit();
             this.panelAlbum.ResumeLayout(false);
             this.panelAlbum.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctCover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCancionesAlbum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctCover)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCanciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrAlbum)).EndInit();
             this.tabFormatos.ResumeLayout(false);
@@ -1316,7 +1351,7 @@
         private System.Windows.Forms.TextBox txtArtista;
         private System.Windows.Forms.Label lblNombreArtista;
         private System.Windows.Forms.DataGridView dgrCancion;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblGridCanciones;
         private System.Windows.Forms.Panel panelCancion;
         private System.Windows.Forms.ListBox lstArtistas;
         private System.Windows.Forms.TextBox txtDuracion;
@@ -1357,15 +1392,12 @@
         private System.Windows.Forms.Button btnModificarAlbum;
         private System.Windows.Forms.Button btnEliminarAlbum;
         private System.Windows.Forms.ListBox lstFormatos;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDescripcionFormato;
         private System.Windows.Forms.Button btnEliminarFormato;
         private System.Windows.Forms.Button btnModificarFormato;
         private System.Windows.Forms.Button btnAgregarFormato;
         private System.Windows.Forms.TextBox txtFormato;
         private System.Windows.Forms.Label lblFormatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AlbumID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistasAlbum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAlbum;
         private System.Windows.Forms.TextBox txtAño;
         private System.Windows.Forms.Label lblAño;
         private System.Windows.Forms.DataGridViewTextBoxColumn CancionID;
@@ -1373,10 +1405,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCancion;
         private System.Windows.Forms.DataGridView dgvCanciones;
         private System.Windows.Forms.DataGridView dgvCancionesAlbum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CancionID_AlbumCancion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPosicion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistas_AlbumCancion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCancion_AlbumCanciones;
         private System.Windows.Forms.TabPage tabUsuarios;
         private System.Windows.Forms.Button btnEliminarUsuario;
         private System.Windows.Forms.Button btnModificarUsuario;
@@ -1389,10 +1417,6 @@
         private System.Windows.Forms.ListBox lstUsuarios;
         private System.Windows.Forms.Label lblUsuarios;
         private System.Windows.Forms.Button btnSuspenderUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CancionID_Canciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCancion_Canciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colOrdenCanciones;
         private System.Windows.Forms.CheckBox chxFijarArtistasCancion;
         private System.Windows.Forms.CheckBox chxFijarAñoCancion;
         private System.Windows.Forms.TextBox txtDiscogsReleaseCode;
@@ -1402,5 +1426,19 @@
         private System.Windows.Forms.PictureBox pctCover;
         private System.Windows.Forms.TextBox txtNumCatalogo;
         private System.Windows.Forms.TextBox txtDisquera;
+        private System.Windows.Forms.TextBox txtSpotifyID;
+        private System.Windows.Forms.Label lblSpotifyID;
+        private Microsoft.Toolkit.Forms.UI.Controls.WebView webSpotifyPreview;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AlbumID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistasAlbum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAlbum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CancionID_Canciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCancion_Canciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOrdenCanciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CancionID_AlbumCancion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPosicion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArtistas_AlbumCancion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCancion_AlbumCanciones;
     }
 }
