@@ -66,7 +66,6 @@
             this.colArtistasCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabAlbum = new System.Windows.Forms.TabPage();
-            this.webSpotifyPreview = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.lblSpacer = new System.Windows.Forms.Label();
             this.btnEliminarAlbum = new System.Windows.Forms.Button();
             this.btnModificarAlbum = new System.Windows.Forms.Button();
@@ -134,6 +133,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lstUsuarios = new System.Windows.Forms.ListBox();
             this.lblUsuarios = new System.Windows.Forms.Label();
+            this.webSpotifyPreview = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.tabMenu.SuspendLayout();
             this.tabArtista.SuspendLayout();
             this.panelArtistas.SuspendLayout();
@@ -141,7 +141,6 @@
             this.panelCancion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrCancion)).BeginInit();
             this.tabAlbum.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.webSpotifyPreview)).BeginInit();
             this.panelAlbum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCancionesAlbum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctCover)).BeginInit();
@@ -150,6 +149,7 @@
             this.tabFormatos.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
             this.panelUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webSpotifyPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMenu
@@ -573,14 +573,6 @@
             this.tabAlbum.TabIndex = 2;
             this.tabAlbum.Text = "Album";
             this.tabAlbum.UseVisualStyleBackColor = true;
-            // 
-            // webSpotifyPreview
-            // 
-            this.webSpotifyPreview.Location = new System.Drawing.Point(740, 36);
-            this.webSpotifyPreview.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webSpotifyPreview.Name = "webSpotifyPreview";
-            this.webSpotifyPreview.Size = new System.Drawing.Size(290, 253);
-            this.webSpotifyPreview.TabIndex = 30;
             // 
             // lblSpacer
             // 
@@ -1292,6 +1284,18 @@
             this.lblUsuarios.TabIndex = 0;
             this.lblUsuarios.Text = "Usuarios";
             // 
+            // webSpotifyPreview
+            // 
+            this.webSpotifyPreview.CreationProperties = null;
+            this.webSpotifyPreview.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webSpotifyPreview.Location = new System.Drawing.Point(740, 36);
+            this.webSpotifyPreview.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webSpotifyPreview.Name = "webSpotifyPreview";
+            this.webSpotifyPreview.Size = new System.Drawing.Size(290, 253);
+            this.webSpotifyPreview.Source = new System.Uri("about:blank", System.UriKind.Absolute);
+            this.webSpotifyPreview.TabIndex = 31;
+            this.webSpotifyPreview.ZoomFactor = 1D;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1316,7 +1320,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrCancion)).EndInit();
             this.tabAlbum.ResumeLayout(false);
             this.tabAlbum.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.webSpotifyPreview)).EndInit();
             this.panelAlbum.ResumeLayout(false);
             this.panelAlbum.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCancionesAlbum)).EndInit();
@@ -1329,6 +1332,7 @@
             this.tabUsuarios.PerformLayout();
             this.panelUsuarios.ResumeLayout(false);
             this.panelUsuarios.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webSpotifyPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1428,7 +1432,6 @@
         private System.Windows.Forms.TextBox txtDisquera;
         private System.Windows.Forms.TextBox txtSpotifyID;
         private System.Windows.Forms.Label lblSpotifyID;
-        private Microsoft.Toolkit.Forms.UI.Controls.WebView webSpotifyPreview;
         private System.Windows.Forms.DataGridViewTextBoxColumn AlbumID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArtistasAlbum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAlbum;
@@ -1440,5 +1443,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPosicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArtistas_AlbumCancion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCancion_AlbumCanciones;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webSpotifyPreview;
     }
 }

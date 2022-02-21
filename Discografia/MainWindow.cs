@@ -245,7 +245,7 @@ namespace Discografia
             ActualizaGridAlbumCanciones();
             VaciaCamposAlbumDiscogs();
             txtSpotifyID.Text = String.Empty;
-            webSpotifyPreview.Navigate("about:blank");
+            webSpotifyPreview.CoreWebView2.Navigate("about:blank");
         }
 
         //vacía los campos de información del álbum obtenida de Discogs
@@ -1034,7 +1034,7 @@ namespace Discografia
                 lstArtistasAlbum.Items.Clear();
                 dgvCancionesAlbum.Rows.Clear();
                 VaciaCamposAlbumDiscogs();
-                webSpotifyPreview.Navigate("about:blank");
+                webSpotifyPreview.CoreWebView2.Navigate("about:blank");
 
                 //obtenemos los datos complementarios del álbum
                 try
