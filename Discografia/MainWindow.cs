@@ -1082,12 +1082,22 @@ namespace Discografia
                         //Preview de spotify
                         if (!String.IsNullOrEmpty(album.SpotifyID))
                         {
-                            string ruta = Directory.GetCurrentDirectory();
+                            //la forma en que se muestra el preview de Spotify cambió debido a que el código
+                            //de Spotify hace uso del elemento localStorage, el cual no es accesible cuando
+                            //se usa el protocolo file://. Para solventarlo asignamos la url del control
+                            //WebView2 a la dirección del preview directamente, en lugar de un archivo local
+                            //con un iframe que contiene el embed del preview. De esta forma el elemento
+                            //localStorage estará disponible al cambiar a un protocolo https://.
+
+                            /*string ruta = Directory.GetCurrentDirectory();
                             string spotifySrc = File.ReadAllText(ruta + @"\SpotifyPreview.html");
                             spotifySrc = spotifySrc.Replace("/album/", "/album/" + album.SpotifyID);
-
-                            webSpotifyPreview.NavigateToString(spotifySrc);
                             
+                            webSpotifyPreview.NavigateToString(spotifySrc);*/
+
+                            string spotifySrc = @"https://open.spotify.com/embed/album/" + album.SpotifyID;
+
+                            webSpotifyPreview.Source = new Uri(spotifySrc);
                         }
                     }
                 }
